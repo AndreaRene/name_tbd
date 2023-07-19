@@ -1,7 +1,7 @@
 // import './App.css';
-import ConsCard from './components/Cards/Consequences/ConsCard';
-import RewardCard from './components/Cards/Rewards/RewardCard';
-import ChoreCard from './components/Cards/Chores/ChoreCard';
+import ConsCard from './components/cards/consequences/ConsCard';
+import RewardCard from './components/cards/rewards/RewardCard';
+import ChoreCard from './components/cards/chores/ChoreCard';
 
 function App() {
   return (

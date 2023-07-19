@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Washer } from '../../../assets/imgs/svgs/Washer.svg';
+import  WasherSVG from '../../../assets/imgs/svgs/svgs.jsx';
 
 import '../index.css';
 import './ChoreCard.css';
@@ -8,7 +8,7 @@ const ChoreCard = () => {
     return (
         <div className='choreCard card'>
             <header className='cardHeader'>
-                <Washer />
+                <WasherSVG />
                 <h3 className='cardTitle'>Chore</h3>
             </header>
             <section className='cardBody'>

@@ -8,6 +8,10 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 
+import '../src/assets/skeleton/normalize.css';
+import '../src/assets/skeleton/skeleton.css';
+
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });

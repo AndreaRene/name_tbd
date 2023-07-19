@@ -1,25 +1,21 @@
 import React from 'react';
-import { ReactComponent as Washer } from './assets/Washer.svg';
-import Washer from './assets/Washer.svg'
-import{ WasherSVG } from '../../../assets/imgs/svgs.js';
+import { ReactComponent as Washer } from '../../../assets/imgs/svgs/Washer.svg';
+
 import '../index.css';
-import './assets/ChoreCard.css';
-
-
+import './ChoreCard.css';
 
 const ChoreCard = () => {
     return (
         <div className='choreCard card'>
             <header className='cardHeader'>
-                <img src={Washer} />
-                <h3 className='cardTitle'></h3>
+                <Washer />
+                <h3 className='cardTitle'>Chore</h3>
             </header>
             <section className='cardBody'>
-                <Washer />
-                <WasherSVG />
+                <p>card body text</p>
             </section>
         </div>
-)
+    )
 };
 
 export default ChoreCard;

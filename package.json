@@ -10,7 +10,10 @@
     "seed": "cd server && npm run seed",
     "build": "cd client && npm run build"
   },
-  "keywords": ["chores", "family"],
+  "keywords": [
+    "chores",
+    "family"
+  ],
   "author": "AndreaRene",
   "license": "ISC",
   "devDependencies": {

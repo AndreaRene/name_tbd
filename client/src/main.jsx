@@ -2,9 +2,9 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
-import Login from './pages/login/Login.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import Dashboard from './pages/dashboard/Dashboard.jsx'
+import Chores from './pages/chores/Chores.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,9 +15,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Dashboard />
-      }, {
-        path: '/login',
-        element: <Login />
+      },
+      {
+        path: '/chores',
+        element: <Chores />
       }
     ]
   },

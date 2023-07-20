@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+// import 'dotenv/config';
 
 import '../src/assets/skeleton/normalize.css';
 import '../src/assets/skeleton/skeleton.css';

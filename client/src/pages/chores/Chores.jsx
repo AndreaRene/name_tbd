@@ -2,7 +2,9 @@ import ChoreList from '../../components/lists/chores/ChoresList.jsx';
 
 const Chores = () => {
     return (
-        <ChoreList />
+        <main id='choresMain' className='pageMain'>
+            <ChoreList />
+        </main>
     )
 };
 

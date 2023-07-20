@@ -8,8 +8,8 @@ const ChoreCard = () => {
     return (
         <div className='choreCard card'>
             <header className='cardHeader'>
-                <WasherSVG />
-                <h3 className='cardTitle'>Chore</h3>
+                <h3 className='cardTitle'>Wash, fold, and put away your laundry</h3>
+                 <WasherSVG />
             </header>
             <section className='cardBody'>
                 <p>card body text</p>

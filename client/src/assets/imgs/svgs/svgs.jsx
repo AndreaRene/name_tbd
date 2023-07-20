@@ -27,4 +27,6 @@ const WasherSVG = () => {
         );
 };
 
-export default WasherSVG
+
+
+export default WasherSVG;

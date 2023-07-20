@@ -1,5 +1,6 @@
 import React from 'react';
-import  VideoGameSVG from '../../../assets/imgs/svgs/svgs.js';
+import { ReactComponent as VideoGameSVG } from '../../../assets/imgs/svgs/videoGame.svg.svg';
+
 
 
 import '../index.css';

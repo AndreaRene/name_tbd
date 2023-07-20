@@ -9,7 +9,7 @@ const ChoreCard = () => {
     return (
         <div className='choreCard card'>
             <header className='cardHeader'>
-                 <Washer />
+                <Washer />
                 <h3 className='cardTitle'>Laundry</h3>
                 <Menu />
             </header>

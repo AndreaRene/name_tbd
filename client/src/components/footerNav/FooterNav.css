@@ -1,0 +1,13 @@
+#pageFooter{
+background-color: aliceblue;
+}
+
+.footerNav {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.footerNavClick {
+    display: inline-block;
+}

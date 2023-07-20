@@ -11,6 +11,7 @@ import { Outlet } from 'react-router-dom';
 
 import '../src/assets/skeleton/normalize.css';
 import '../src/assets/skeleton/skeleton.css';
+import FooterNav from './components/footerNav/FooterNav';
 
 
 const httpLink = createHttpLink({
@@ -36,9 +37,13 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
+        <div>
           <Outlet />
+        </div>
+        <FooterNav />
       </div>
-    </ApolloProvider>
+      </ApolloProvider>
+    
   );
 }
 

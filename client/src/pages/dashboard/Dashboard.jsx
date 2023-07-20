@@ -2,7 +2,10 @@ import ChoreCard from '../../components/cards/chores/ChoreCard.jsx';
 
 const Dashboard = () => {
     return (
-        <main>
+        <main className='pageMain'>
+            <ChoreCard />
+            <ChoreCard />
+            <ChoreCard />
             <ChoreCard />
         </main>
     )

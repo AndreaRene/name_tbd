@@ -1,15 +1,12 @@
 const typeDefs = `
-  type User {
+  type Chore {
     _id: ID
-    username: String
-    email: String
-    password: String
+    choreTitle: String!
+    choreText: String!
   }
 
   type Query {
-    users: [User]
-    user(username: String!): User
-    me: User
+    chores: [Chore]
   }`;
 
 module.exports = typeDefs;

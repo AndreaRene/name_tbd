@@ -7,6 +7,7 @@ const typeDefs = `
 
   type Query {
     chores: [Chore]
+    oneChore(choreId: ID!): Chore
   }`;
 
 module.exports = typeDefs;

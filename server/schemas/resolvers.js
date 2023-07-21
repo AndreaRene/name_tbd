@@ -1,4 +1,4 @@
-import Chore from '../models/Chore.js';
+const { Chore } = require('../models');
 
 const resolvers = {
     Query: {

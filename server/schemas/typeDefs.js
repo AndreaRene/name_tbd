@@ -2,12 +2,13 @@ const typeDefs = `
 
     type Parent {
       parentUsername: String!
-      emailAddress: String!
-      phone: Int
+      parentEmail: String!
+      parentPhone: Int
       parentPassword: String!
       parentPin: Int!
-      child: [Child]
-      coParent: [Parent]
+      parentChild: [Child]
+      parentCoParent: [Parent]
+      parentCode: String!
     }
 
     type Child{
@@ -49,6 +50,17 @@ const typeDefs = `
     consText: String
     ConsCount: Int
     consCost: Int
+  }
+
+  input ChoreInput {
+    choreTitle: String!
+    choreText: String
+    choreIsMultiple: Boolean
+    choreDueDate: [String]
+    choreDueTime: [String]
+    choreReward: Reward
+    chorePoints: Int
+    choreCons: Consequence
   }
 
   type Query {

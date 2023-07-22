@@ -13,9 +13,33 @@ const choreSchema = new Schema({
     maxlength: 200,
     trim: true,
   },
-  choreComplete: {
+  choreIsMultiple: {
     type: Boolean,
-  }
+  },
+  choreDueDate: [{
+    type: Date,
+  }],
+  choreDueTime: [{
+    type: Date,
+  }],
+  choreAmount: {
+    type: Number,
+  },
+  choreIsComplete: {
+    type: Boolean,
+  },
+  choreCompleteDates: [{
+    type: Date,
+  }],
+  choreReward: [{
+    type: String,
+  }],
+  ChorePoints: {
+    type: Number,
+  },
+  choreCons: [{
+    type: String,
+  }]
 });
 
 const Chore = model('Chore', choreSchema);

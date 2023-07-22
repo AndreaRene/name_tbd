@@ -27,12 +27,12 @@ const typeDefs = `
     choreIsMultiple: Boolean
     choreDueDate: [String]
     choreDueTime: [String]
-    choreAmount: Int
+    choreAmount: Int!
     choreIsComplete: Boolean
     choreCompleteDates: [String]
-    choreReward: Reward
+    choreReward: [Reward]
     chorePoints: Int
-    choreCons: Consequence
+    choreCons: [Consequence]
   }
 
   type Reward {
@@ -64,16 +64,16 @@ const typeDefs = `
   input ChildInput{
     childUsername: String!
   }
-  
+
   input ChoreInput {
     choreTitle: String!
     choreText: String
     choreIsMultiple: Boolean
     choreDueDate: [String]
     choreDueTime: [String]
-    choreReward: Reward
+    choreReward: [String]
     chorePoints: Int
-    choreCons: Consequence
+    choreCons: [String]
   }
 
   input RewardInput {

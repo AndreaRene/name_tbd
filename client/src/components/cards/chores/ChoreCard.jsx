@@ -22,9 +22,8 @@ const handleClick = () => {
                 <Menu onClick={handleClick}/>
             </header>
                 <section className={`cardBody ${toggle ? '' : 'slide'}`}>
-                <CardDD/>  
-            </section>
-             
+                <CardDD />  
+            </section>            
         </div>
     )
 };

@@ -3,6 +3,7 @@ const typeDefs = `
     _id: ID
     choreTitle: String!
     choreText: String!
+    choreComplete: Boolean
   }
 
   type Query {

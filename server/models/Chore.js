@@ -13,7 +13,9 @@ const choreSchema = new Schema({
     maxlength: 200,
     trim: true,
   },
- 
+  choreComplete: {
+    type: Boolean,
+  }
 });
 
 const Chore = model('Chore', choreSchema);

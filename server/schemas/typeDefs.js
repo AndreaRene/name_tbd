@@ -50,8 +50,21 @@ const typeDefs = `
     consText: String
     ConsCount: Int
     consCost: Int
+    consIsSpent: Boolean
   }
 
+  input ParentInput{
+    parentUsername: String!
+      parentEmail: String!
+      parentPhone: Int
+      parentPassword: String!
+      parentPin: Int!
+  }
+
+  input ChildInput{
+    childUsername: String!
+  }
+  
   input ChoreInput {
     choreTitle: String!
     choreText: String
@@ -61,6 +74,19 @@ const typeDefs = `
     choreReward: Reward
     chorePoints: Int
     choreCons: Consequence
+  }
+
+  input RewardInput {
+    rewardTitle: String!
+    rewardText: String
+    rewardCost: Int
+    rewardExpyDate: String
+  }
+
+  input ConsequenceInput {
+    consTitle: String!
+    consText: String
+    consCost: Int
   }
 
   type Query {

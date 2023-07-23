@@ -32,13 +32,15 @@ const choreSchema = new Schema({
     type: Date,
   }],
   choreReward: [{
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Reward'
   }],
   ChorePoints: {
     type: Number,
   },
   choreCons: [{
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'Consequence'
   }]
 });
 

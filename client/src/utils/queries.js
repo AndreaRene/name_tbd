@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-
+//TODO:
 export const QUERY_CHORES = gql`
 query getChores {
     chores{

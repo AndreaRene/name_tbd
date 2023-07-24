@@ -1,3 +1,4 @@
 const Chore = require('./Chore');
+const Parent = require('./Parent');
 
-module.exports = { Chore };
+module.exports = { Chore, Parent };

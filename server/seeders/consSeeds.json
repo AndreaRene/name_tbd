@@ -1,0 +1,27 @@
+[
+    {
+        "consTitle" : "ConsTitle1",
+        "consText" : "ConstText1",
+        "consCount" : 1,
+        "consCost" : 1,
+        "consIsSpent" : false
+    },{
+        "consTitle" : "ConsTitle2",
+        "consText" : "ConstText2",
+        "consCount" : 2,
+        "consCost" : 2,
+        "consIsSpent" : true
+    },{
+        "consTitle" : "ConsTitle3",
+        "consText" : "ConstText3",
+        "consCount" : 3,
+        "consCost" : 3,
+        "consIsSpent" : false
+    },{
+        "consTitle" : "ConsTitle4",
+        "consText" : "ConstText4",
+        "consCount" : 4,
+        "consCost" : 4,
+        "consIsSpent" : true
+    }
+]

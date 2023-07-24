@@ -5,13 +5,15 @@ const {
   Parent,
   Child,
   Chore,
-  Reward
+  Reward,
+  Consequence
 } = require('../models');
 
 const parentSeeds = require('./parentSeeds.json');
 const childSeeds = require('./childSeeds.json');
 const choreSeeds = require('./choreSeeds.json');
 const rewardSeeds = require('./rewardSeeds.json');
+const consdSeeds = require('./consSeeds.json');
 
 db.once('open', async () => {
   try {
@@ -20,11 +22,14 @@ db.once('open', async () => {
     await cleanDB('Child', 'childs');
     await cleanDB('Chore', 'chores');
     await cleanDB('Reward', 'rewards');
+    await cleanDB('Consequence', 'concequences');
 
     await Parent.create(parentSeeds);
     await Child.create(childSeeds);
     await Chore.create(choreSeeds);
     await Reward.create(rewardSeeds);
+    await Consequence.create(consdSeeds);
+
     
   } catch (err) {
     console.error(err);

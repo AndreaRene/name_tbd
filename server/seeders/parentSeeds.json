@@ -5,8 +5,8 @@
         "parentPhone": 1111111111,
         "parentPassword": "password1",
         "parentPin": 1111,
-        "parentChild": ["child1"],
-        "parentCoParent": ["Parent2"]
+        "parentChild": ["ChildUser1", "ChildUser3"],
+        "parentCoParent": ["ParentUser2", "ParentUser5"]
     },
     {
         "parentUsername": "ParentUser2", 
@@ -14,8 +14,8 @@
         "parentPhone": 2222222222,
         "parentPassword": "password2",
         "parentPin": 2222,
-        "parentChild": ["child1"],
-        "parentCoParent": ["Parent1"]
+        "parentChild": ["ChildUser1","ChildUser3"],
+        "parentCoParent": ["ParentUser1", "ParentUser5"]
     },
     {
         "parentUsername": "ParentUser3", 
@@ -23,8 +23,8 @@
         "parentPhone": 3333333333,
         "parentPassword": "password3",
         "parentPin": 3333,
-        "parentChild": ["child2"],
-        "parentCoParent": ["Parent4"]
+        "parentChild": "ChildUser2",
+        "parentCoParent": "ParentUser4"
     },
     {
         "parentUsername": "ParentUser4", 
@@ -32,7 +32,16 @@
         "parentPhone": 4444444444,
         "parentPassword": "password4",
         "parentPin": 4444,
-        "parentChild": ["child2"],
-        "parentCoParent": ["Parent3"]
+        "parentChild": "ChildUser2",
+        "parentCoParent": "ParentUser3"
+    },
+    {
+        "parentUsername": "ParentUser5", 
+        "parentEmail": "p_user5@email.com",
+        "parentPhone": 5555555555,
+        "parentPassword": "password5",
+        "parentPin": 5555,
+        "parentChild": ["ChildUser1", "ChildUser3"],
+        "parentCoParent": ["ParentUser1", "ParentUser2"]
     }
 ]

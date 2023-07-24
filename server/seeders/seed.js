@@ -1,7 +1,7 @@
 const db = require('../config/connection');
 const cleanDB = require('./cleanDB');
 
-const { Chore, Parent } = require('../models');
+const { Parent, Chore,  } = require('../models');
 
 const parentSeeds = require('./parentSeeds.json');
 const choreSeeds = require('./choreSeeds.json');

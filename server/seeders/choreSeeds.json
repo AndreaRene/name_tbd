@@ -2,27 +2,34 @@
     {
         "choreTitle" : "Laundry",
         "choreText" : "Wash, Dry, Fold, Put Away",
-        "choreComplete" : false
+        "choreComplete" : false,
+        "choreReward" : "RewardTitle1",
+        "choreCons" : "ConsTitle1"
     },
     {
         "choreTitle" : "Dishes",
         "choreText" : "Unload/Load Dishwasher, Handwash Pots/Pans",
-        "choreComplete" : false
+        "choreComplete" : false,
+        "choreReward" : ["RewardTitle2", "RewardTitle3"],
+        "choreCons" : "ConsTitle2"
     },
     {
         "choreTitle" : "Floors",
         "choreText" : "Vacuum, Sweep, Mop",
-        "choreComplete" : false
+        "choreComplete" : false,
+        "choreCons" : ["consTitle3", "consTitle4"]
     },
     {
         "choreTitle" : "Dust",
         "choreText" : "Everything",
-        "choreComplete" : false
+        "choreComplete" : false,
+        "choreReward" : "rewardTitle3"
     },
     {
         "choreTitle" : "Clean Room",
         "choreText" : "Put away toys and dirty laundry",
-        "choreComplete" : false
+        "choreComplete" : false,
+        "choreCons" : "consTitle2"
     },
     {
         "choreTitle" : "Rake Yard",

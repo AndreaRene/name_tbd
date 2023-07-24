@@ -47,4 +47,8 @@ const parentSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Parent'
     }
-})
+});
+
+const Parent = model('Parent', parentSchema);
+
+module.exports = Parent;

@@ -9,7 +9,6 @@ const choreSchema = new Schema({
   },
   choreText: {
     type: String,
-    required: true,
     maxlength: 200,
     trim: true,
   },

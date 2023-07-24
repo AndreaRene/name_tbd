@@ -94,4 +94,8 @@ const typeDefs = `
     oneChore(choreId: ID!): Chore
   }`;
 
+
+// TODO: define queries and mutations
+
+
 module.exports = typeDefs;

@@ -1,0 +1,38 @@
+[
+    {
+        "parentUsername": "ParentUser1", 
+        "parentEmail": "p_user1@email.com",
+        "parentPhone": 1111111111,
+        "parentPassword": "password1",
+        "parentPin": 1111,
+        "parentChild": ["child1"],
+        "parentCoParent": ["Parent2"]
+    },
+    {
+        "parentUsername": "ParentUser2", 
+        "parentEmail": "p_user2@email.com",
+        "parentPhone": 2222222222,
+        "parentPassword": "password2",
+        "parentPin": 2222,
+        "parentChild": ["child1"],
+        "parentCoParent": ["Parent1"]
+    },
+    {
+        "parentUsername": "ParentUser3", 
+        "parentEmail": "p_user3@email.com",
+        "parentPhone": 3333333333,
+        "parentPassword": "password3",
+        "parentPin": 3333,
+        "parentChild": ["child2"],
+        "parentCoParent": ["Parent4"]
+    },
+    {
+        "parentUsername": "ParentUser4", 
+        "parentEmail": "p_user4@email.com",
+        "parentPhone": 4444444444,
+        "parentPassword": "password4",
+        "parentPin": 4444,
+        "parentChild": ["child2"],
+        "parentCoParent": ["Parent3"]
+    }
+]

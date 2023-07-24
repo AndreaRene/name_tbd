@@ -1,11 +1,16 @@
 const db = require('../config/connection');
-const { Chore } = require('../models');
-const choreSeeds = require('./choreSeeds.json');
 const cleanDB = require('./cleanDB');
+
+const { Chore, Parent } = require('../models');
+
+const parentSeeds = require('./parentSeeds.json');
+const choreSeeds = require('./choreSeeds.json');
 
 db.once('open', async () => {
   try {
+    await cleanDB('Parent', 'parents');
     await cleanDB('Chore', 'chores');
+    await Parent.create(parentSeeds);
     await Chore.create(choreSeeds);
   } catch (err) {
     console.error(err);

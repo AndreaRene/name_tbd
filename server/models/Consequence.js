@@ -14,7 +14,7 @@ const consequenceSchema = new Schema({
     },
     consCount: {
         type: Number,
-        },
+    },
     consCost: {
         type: Number,
         maxlength: 3,

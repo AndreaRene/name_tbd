@@ -27,7 +27,7 @@ const typeDefs = `
     choreIsMultiple: Boolean
     choreDueDate: [String]
     choreDueTime: [String]
-    choreAmount: Int!
+    choreAmount: Int
     choreIsComplete: Boolean
     choreCompleteDates: [String]
     choreReward: [Reward]
@@ -92,6 +92,12 @@ const typeDefs = `
   type Query {
     chores: [Chore]
     oneChore(choreId: ID!): Chore
+    oneParent(parentId: ID!): Parent
+    oneChild(childId: ID!): Child
+    rewards: [Reward]
+    oneReward(rewardId: ID!): Reward
+    consequences: [Consequence]
+    oneConsequence(consId: ID!): Consequence
   }`;
 
 

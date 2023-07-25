@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const consequenceSchema = new Schema({
+    
     consTitle: {
         type: String,
         required: true,

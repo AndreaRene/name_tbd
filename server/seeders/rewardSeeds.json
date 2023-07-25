@@ -5,23 +5,20 @@
         "rewardCost" : 1,
         "rewardCount" : 1,
         "rewardMaxCount" : 1,
-        "rewardIsSpent": false,
-        "rewardExpyDate" : "",
+        "rewardIsSpent": false
     },{
         "rewardTitle" : "RewardTitle2",
         "rewardText" : "RewardText2",
         "rewardCost" : 2,
         "rewardCount" : 2,
         "rewardMaxCount" : 2,
-        "rewardIsSpent": true,
-        "rewardExpyDate" : "",
+        "rewardIsSpent": true
     },{
         "rewardTitle" : "RewardTitle3",
         "rewardText" : "RewardText3",
         "rewardCost" : 3,
         "rewardCount" : 3,
         "rewardMaxCount" : 3,
-        "rewardIsSpent": false,
-        "rewardExpyDate" : "",
+        "rewardIsSpent": false
     }
 ]

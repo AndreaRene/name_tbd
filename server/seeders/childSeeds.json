@@ -1,24 +1,9 @@
 [
     {
-        "childUsername" : "ChildUser1",
-        "childSibling" : "ChildUser3",
-        "childParent" : ["ParentUser1", "ParentUser2", "ParentUser5"],
-        "childChore" : ["Laundry", "Clean Room"],
-        "childReward" : "",
-        "childCons" : ""
+        "childUsername" : "ChildUser1"
     },{
-        "childUsername" : "ChildUser2",
-        "childSibling" : "",
-        "childParent" : ["ParentUser3", "ParentUser4"],
-        "childChore" : ["Floors", "Dishes"],
-        "childReward" : "",
-        "childCons" : ""
+        "childUsername" : "ChildUser2"
     },{
-        "childUsername" : "ChildUser3",
-        "childSibling" : "ChildUser1",
-        "childParent" : ["ParentUser1", "ParentUser2"],
-        "childChore" : "Dust",
-        "childReward" : "",
-        "childCons" : ""
+        "childUsername" : "ChildUser3"
     }
 ]

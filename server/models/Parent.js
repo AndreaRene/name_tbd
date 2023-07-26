@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const PhoneNumber = require('google-libphonenumber');
+// const PhoneNumber = require('google-libphonenumber');
 
 const parentSchema = new Schema({
     parentUsername: {
@@ -19,34 +19,34 @@ const parentSchema = new Schema({
         match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
     parentPhone: {
-        type: Number,
+        type: String,
         unique: true,
         trim: true, //TODO: trim true or disallow spaces as user types?
         // TODO: figure out google-libphone
     },
     parentPassword: {
         type: String,
-        require: true,
+        // require: true,
         //TODO: required/disallowed characters
     },
     parentPin: {
         type: Number,
-        require: true,
+        // require: true,
         minlength: 4,
         maxlength: 6
     },
-    parentCode: {
+    // parentCode: {
         //this will be like a friend code used to add other parents to the family
         //use a package like uuid or write a thing? 
-    },
-    parentChild: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Child'
-    }],
-    parentCoParent: {
-        type: Schema.Types.ObjectId,
-        ref: 'Parent'
-    }
+    // },
+    // parentChild: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Child'
+    // }],
+    // parentCoParent: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Parent'
+    // }
 });
 
 const Parent = model('Parent', parentSchema);

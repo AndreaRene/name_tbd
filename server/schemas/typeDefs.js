@@ -4,12 +4,12 @@ const typeDefs = `
       _id: ID
       parentUsername: String!
       parentEmail: String!
-      parentPhone: Int
-      parentPassword: String!
-      parentPin: Int!
+      parentPhone: String
+      parentPassword: String
+      parentPin: Int
       parentChild: [Child]
       parentCoParent: [Parent]
-      parentCode: String!
+      parentCode: String
     }
 
     type Child{
@@ -60,7 +60,7 @@ const typeDefs = `
   input ParentInput{
     parentUsername: String!
       parentEmail: String!
-      parentPhone: Int
+      parentPhone: String
       parentPassword: String!
       parentPin: Int!
   }
@@ -107,7 +107,7 @@ const typeDefs = `
   }
   
   type Mutation {
-    addParent(parentUsername: String!, parentEmail: String!, parentPhone: Int): Parent
+    addParent(parentUsername: String!, parentEmail: String!, parentPhone: String): Parent
   }`;
 
 

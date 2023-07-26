@@ -14,8 +14,14 @@ const resolvers = {
         oneChore: async (parent, { choreId }) => {
             return Chore.findOne({ _id: choreId });
         },
+        parents: async () => {
+            return Parent.find()
+        },
         oneParent: async (parent, { parentId }) => {
             return Parent.findOne({_id: parentId})
+        },
+        childs: async () => {
+            return Child.find()
         },
         oneChild: async (parent, { childId }) => {
             return Child.findOne({_id: childId})

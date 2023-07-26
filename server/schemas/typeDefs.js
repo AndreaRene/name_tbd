@@ -1,6 +1,7 @@
 const typeDefs = `
 
     type Parent {
+      _id: ID
       parentUsername: String!
       parentEmail: String!
       parentPhone: Int
@@ -12,6 +13,7 @@ const typeDefs = `
     }
 
     type Child{
+      _id: ID
       childUsername: String!
       childParent: [Parent]!
       childSibling: [Child]
@@ -36,6 +38,7 @@ const typeDefs = `
   }
 
   type Reward {
+    _id: ID
     rewardTitle: String!
     rewardText: String
     rewardCost: Int
@@ -46,6 +49,7 @@ const typeDefs = `
   }
 
   type Consequence {
+    _id: ID
     consTitle: String!
     consText: String
     ConsCount: Int
@@ -92,12 +96,18 @@ const typeDefs = `
   type Query {
     chores: [Chore]
     oneChore(choreId: ID!): Chore
+    parents: [Parent]
     oneParent(parentId: ID!): Parent
+    childs: [Child]
     oneChild(childId: ID!): Child
     rewards: [Reward]
     oneReward(rewardId: ID!): Reward
     consequences: [Consequence]
     oneConsequence(consId: ID!): Consequence
+  }
+  
+  type Mutation {
+    addParent(parentUsername: String!, parentEmail: String!, parentPhone: Int): Parent
   }`;
 
 

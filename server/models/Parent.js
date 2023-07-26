@@ -26,27 +26,28 @@ const parentSchema = new Schema({
     },
     parentPassword: {
         type: String,
-        // require: true,
+        require: true,
         //TODO: required/disallowed characters
     },
     parentPin: {
         type: Number,
-        // require: true,
+        require: true,
         minlength: 4,
         maxlength: 6
     },
-    // parentCode: {
-        //this will be like a friend code used to add other parents to the family
-        //use a package like uuid or write a thing? 
-    // },
-    // parentChild: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Child'
-    // }],
-    // parentCoParent: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Parent'
-    // }
+    parentCode: {
+        type: String
+        // this will be like a friend code used to add other parents to the family
+        // use a package like uuid or write a thing? 
+    },
+    parentChild: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Child'
+    }],
+    parentCoParent: {
+        type: Schema.Types.ObjectId,
+        ref: 'Parent'
+    }
 });
 
 const Parent = model('Parent', parentSchema);

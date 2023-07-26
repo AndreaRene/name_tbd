@@ -41,27 +41,38 @@ const resolvers = {
     },
 
     Mutation: {
-        addParent: async (parent, { parentUsername, parentEmail, parentPhone }) => {
-            try {
-                const newParent = await Parent.create({ parentUsername, parentEmail, parentPhone });
-                return newParent;
-            } catch (error) {
-                console.error("Error while adding parent:", error);
-                throw new Error("Failed to add parent.");
-            }
-        }
-    },
-    Mutation: {
-        addReward: async ( parent , { rewardTitle, rewardText, rewardIsSpent }) => {
-            try {
-                const newReward = await Reward.create({ rewardTitle, rewardText, rewardIsSpent });
-                return newReward;
-            } catch (error) {
-                console.error("Error while adding reward:", error);
-                throw new Error("Failed to add reward.");
-            }
-        }
+        createParent: async (_, { input }) => {
+    try {
+      const {
+        parentUsername,
+        parentEmail,
+        parentPhone,
+        parentPassword,
+        parentPin,
+        parentChild,
+        parentCoParent,
+        parentCode,
+      } = input;
+        
+      const newParent = await Parent.create({
+        parentUsername,
+        parentEmail,
+        parentPhone,
+        parentPassword,
+        parentPin,
+        parentChild,
+        parentCoParent,
+        parentCode,
+      });
+      return newParent;
+    } catch (error) {
+      console.error("Error while adding parent:", error);
+      throw new Error("Failed to add parent.");
     }
+  },
+},
+
+
 };
 
 module.exports = resolvers;

@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const parentSchema = new Schema({
     parentUsername: {
         type: String,
-        require: true,
+        // require: true,
         unique: true,
         minlength: 2,
         maxlength: 20,
@@ -24,17 +24,17 @@ const parentSchema = new Schema({
         trim: true, //TODO: trim true or disallow spaces as user types?
         // TODO: figure out google-libphone
     },
-    parentPassword: {
-        type: String,
+    // parentPassword: {
+    //     type: String,
         // require: true,
         //TODO: required/disallowed characters
-    },
-    parentPin: {
-        type: Number,
-        // require: true,
-        minlength: 4,
-        maxlength: 6
-    },
+    // },
+    // parentPin: {
+    //     type: Number,
+    //     // require: true,
+    //     minlength: 4,
+    //     maxlength: 6
+    // },
     // parentCode: {
         //this will be like a friend code used to add other parents to the family
         //use a package like uuid or write a thing? 

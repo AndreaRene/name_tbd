@@ -97,7 +97,29 @@ const resolvers = {
                 throw new Error("Failed to add reward.");
             }
         },
-       
+        createConsequence: async (_, { input }) => {
+            try {
+                const {
+                    consTitle,
+                    consText,
+                    ConsCount,
+                    consCost,
+                    consIsSpent
+                } = input;
+        
+                const newConsequence = await Consequence.create({
+                    consTitle,
+                    consText,
+                    ConsCount,
+                    consCost,
+                    consIsSpent
+                });
+                return newConsequence;
+            } catch (error) {
+                console.error("Error while adding consequence:", error);
+                throw new Error("Failed to add consequence.");
+            }
+        },
     },
 };
 

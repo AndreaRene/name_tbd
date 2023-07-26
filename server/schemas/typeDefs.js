@@ -59,13 +59,13 @@ const typeDefs = `
 
   input ParentInput{
     parentUsername: String!
-      parentEmail: String!
-      parentPhone: String
-      parentPassword: String!
-      parentPin: Int!
-      parentCode: String
-      parentChild: [ID]
-      parentCoParent: [ID]
+    parentEmail: String!
+    parentPhone: String
+    parentPassword: String!
+    parentPin: Int!
+    parentCode: String
+    parentChild: [ID]
+    parentCoParent: [ID]
   }
 
   input ChildInput{
@@ -116,7 +116,8 @@ const typeDefs = `
   
   type Mutation {
     createParent(input: ParentInput!): Parent!
-    createReward(input: RewardInput!): Reward!    
+    createReward(input: RewardInput!): Reward!
+    createConsequence(input: ConsequenceInput!): Consequence!    
   }`;
 
 

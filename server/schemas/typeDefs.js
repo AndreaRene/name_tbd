@@ -61,8 +61,6 @@ const typeDefs = `
     parentUsername: String!
       parentEmail: String!
       parentPhone: String
-      parentPassword: String!
-      parentPin: Int!
   }
 
   input ChildInput{

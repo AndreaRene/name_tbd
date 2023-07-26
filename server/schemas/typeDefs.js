@@ -106,6 +106,7 @@ const typeDefs = `
   
   type Mutation {
     addParent(parentUsername: String!, parentEmail: String!, parentPhone: String): Parent
+    addReward(rewardTitle: String!, rewardText: String, rewardIsSpent: Boolean!): Reward
   }`;
 
 

@@ -44,7 +44,7 @@ const resolvers = {
   addParent: async (parent, { parentUsername, parentEmail, parentPhone }) => {
     try {
       const newParent = await Parent.create({ parentUsername, parentEmail, parentPhone });
-      return { newParent };
+      return newParent;
     } catch (error) {
       console.error("Error while adding parent:", error);
       throw new Error("Failed to add parent.");

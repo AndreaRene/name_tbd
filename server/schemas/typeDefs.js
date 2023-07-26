@@ -87,13 +87,18 @@ const typeDefs = `
     rewardTitle: String!
     rewardText: String
     rewardCost: Int
+    rewardCount: Int
+    rewardMaxCount: Int
+    rewardIsSpent: Boolean
     rewardExpyDate: String
   }
 
   input ConsequenceInput {
     consTitle: String!
     consText: String
+    ConsCount: Int
     consCost: Int
+    consIsSpent: Boolean
   }
 
   type Query {
@@ -111,6 +116,7 @@ const typeDefs = `
   
   type Mutation {
     createParent(input: ParentInput!): Parent!
+    createReward(input: RewardInput!): Reward!    
   }`;
 
 

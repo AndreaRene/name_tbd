@@ -42,37 +42,63 @@ const resolvers = {
 
     Mutation: {
         createParent: async (_, { input }) => {
-    try {
-      const {
-        parentUsername,
-        parentEmail,
-        parentPhone,
-        parentPassword,
-        parentPin,
-        parentChild,
-        parentCoParent,
-        parentCode,
-      } = input;
+            try {
+                const {
+                    parentUsername,
+                    parentEmail,
+                    parentPhone,
+                    parentPassword,
+                    parentPin,
+                    parentChild,
+                    parentCoParent,
+                    parentCode,
+                } = input;
         
-      const newParent = await Parent.create({
-        parentUsername,
-        parentEmail,
-        parentPhone,
-        parentPassword,
-        parentPin,
-        parentChild,
-        parentCoParent,
-        parentCode,
-      });
-      return newParent;
-    } catch (error) {
-      console.error("Error while adding parent:", error);
-      throw new Error("Failed to add parent.");
-    }
-  },
-},
-
-
+                const newParent = await Parent.create({
+                    parentUsername,
+                    parentEmail,
+                    parentPhone,
+                    parentPassword,
+                    parentPin,
+                    parentChild,
+                    parentCoParent,
+                    parentCode,
+                });
+                return newParent;
+            } catch (error) {
+                console.error("Error while adding parent:", error);
+                throw new Error("Failed to add parent.");
+            }
+        },
+        createReward: async (_, { input }) => {
+            try {
+                const {
+                    rewardTitle,
+                    rewardText,
+                    rewardCost,
+                    rewardCount,
+                    rewardMaxCount,
+                    rewardIsSpent,
+                    rewardExpyDate
+                } = input;
+        
+                const newReward = await Reward.create({
+                    rewardTitle,
+                    rewardText,
+                    rewardCost,
+                    rewardCount,
+                    rewardMaxCount,
+                    rewardIsSpent,
+                    rewardExpyDate
+                });
+                return newReward;
+            } catch (error) {
+                console.error("Error while adding reward:", error);
+                throw new Error("Failed to add reward.");
+            }
+        },
+       
+    },
 };
 
 module.exports = resolvers;

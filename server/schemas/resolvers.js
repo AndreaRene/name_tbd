@@ -70,6 +70,31 @@ const resolvers = {
                 throw new Error("Failed to add parent.");
             }
         },
+        createChild: async (_, { input }) => {
+            try {
+                const {
+                    childUsername,
+                    childParent,
+                    childSibling,
+                    childChore,
+                    childReward,
+                    childCons
+                } = input;
+
+                const newChild = await Child.create({
+                    childUsername,
+                    childParent,
+                    childSibling,
+                    childChore,
+                    childReward,
+                    childCons
+                });
+                return newChild;
+            } catch (error) {
+                console.error("Error while adding child:", error);
+                throw new Error("Failed to add child.");
+            }
+        },
         createReward: async (_, { input }) => {
             try {
                 const {
@@ -119,8 +144,8 @@ const resolvers = {
                 console.error("Error while adding consequence:", error);
                 throw new Error("Failed to add consequence.");
             }
-        },
-    },
-};
+        }, 
+    }
+}
 
 module.exports = resolvers;

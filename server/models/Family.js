@@ -13,19 +13,23 @@ const familySchema = new Schema({
         type: String,
         require: true,  
     },
-    familyParents: [{
+    familyJoinCode: [{
+        type: String,
+        require: true
+    }],
+    familyParent: [{
         type: Schema.Types.ObjectId,
         ref: 'Parent'
     }],
-    familyChildren: [{
+    familyChild: [{
         type: Schema.Types.ObjectId,
         ref: 'Child'
     }],
-    familyChores: [{
+    familyChore: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }],
-    familyRewards: [{
+    familyReward: [{
         type: Schema.Types.ObjectId,
         ref: 'Reward'
     }],

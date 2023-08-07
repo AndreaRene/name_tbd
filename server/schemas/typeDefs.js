@@ -3,11 +3,11 @@ const typeDefs = `
       _id: ID
       familyName: String!
       familyPasscode: String!
-      familyParents: [String]!
-      familyChildren: [String]
-      familyChores: [String]
-      familyRewards: [String]
-      familyCons: [String]
+      familyParent: [Parent]!
+      familyChild: [Child]
+      familyChore: [Chore]
+      familyReward: [Reward]
+      familyCons: [Consequence]
     }
     
     type Parent {
@@ -18,11 +18,13 @@ const typeDefs = `
       parentPassword: String!
       parentPin: Int!
       parentCode: String
+      parentFamily: Family
     }
 
     type Child{
       _id: ID
       childUsername: String!
+      childFamily: Family
       childChore: [Chore]
       childReward: [Reward]
       childCons: [Consequence]
@@ -34,7 +36,7 @@ const typeDefs = `
     choreText: String
     choreIsMultiple: Boolean
     choreDueDate: [String]
-    choreDueTime: [String]
+    choreDueTime: String
     choreAmount: Int
     choreIsComplete: Boolean
     choreCompleteDates: [String]
@@ -51,7 +53,7 @@ const typeDefs = `
     rewardCount: Int
     rewardMaxCount: Int
     rewardIsSpent: Boolean
-    rewardExpyDate: String
+    rewardExpiryDate: String
   }
 
   type Consequence {
@@ -61,6 +63,17 @@ const typeDefs = `
     ConsCount: Int
     consCost: Int
     consIsSpent: Boolean
+  }
+
+  input FamilyInput {
+    familyName: String!
+    familyPasscode: String!
+    familyParent: [ID]!
+    familyChild: [ID]
+    familyChore: [ID]
+    familyReward: [ID]
+    familyCons: [ID]
+    }
   }
 
   input ParentInput{
@@ -85,9 +98,9 @@ const typeDefs = `
     choreIsMultiple: Boolean
     choreDueDate: [String]
     choreDueTime: [String]
-    choreReward: [String]
+    choreReward: [ID]
     chorePoints: Int
-    choreCons: [String]
+    choreCons: [ID]
   }
 
   input RewardInput {
@@ -97,13 +110,13 @@ const typeDefs = `
     rewardCount: Int
     rewardMaxCount: Int
     rewardIsSpent: Boolean
-    rewardExpyDate: String
+    rewardExpiryDate: String
   }
 
   input ConsequenceInput {
     consTitle: String!
     consText: String
-    ConsCount: Int
+    consCount: Int
     consCost: Int
     consIsSpent: Boolean
   }

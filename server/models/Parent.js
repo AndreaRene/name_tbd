@@ -29,25 +29,11 @@ const parentSchema = new Schema({
         require: true,
         //TODO: required/disallowed characters
     },
-    parentPin: {
-        type: Number,
-        require: true,
-        minlength: 4,
-        maxlength: 6
-    },
-    parentCode: {
-        type: String
-        // this will be like a friend code used to add other parents to the family
-        // use a package like uuid or write a thing? 
-    },
-    parentChild: [{
+    parentfamily: {
         type: Schema.Types.ObjectId,
-        ref: 'Child'
-    }],
-    parentCoParent: {
-        type: Schema.Types.ObjectId,
-        ref: 'Parent'
+        ref: 'Family'
     }
+
 });
 
 const Parent = model('Parent', parentSchema);

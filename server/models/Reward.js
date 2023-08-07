@@ -26,14 +26,6 @@ const rewardSchema = new Schema({
         type: Number,
         maxlength: 2,
         match: /[0-9]/
-    },
-    rewardIsSpent: {
-        type: Boolean,
-        require: true,
-        default: false,
-    },
-    rewardExpyDate: {
-        type: Date
     }
 });
 

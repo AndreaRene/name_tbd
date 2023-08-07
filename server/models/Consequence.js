@@ -20,12 +20,7 @@ const consequenceSchema = new Schema({
         type: Number,
         maxlength: 3,
         match: /[0-9]/
-    },
-    consIsSpent: {
-        type: Boolean,
-        require: true,
-        default: false,
-    },
+    }
 });
 
 const Consequence = model('Consequence', consequenceSchema);

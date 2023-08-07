@@ -12,22 +12,10 @@ const choreSchema = new Schema({
     maxlength: 200,
     trim: true,
   },
-  choreIsMultiple: {
-    type: Boolean,
-  },
   choreDueDate: [{
     type: Date,
   }],
-  choreDueTime: [{
-    type: Date,
-  }],
-  choreAmount: {
-    type: Number,
-  },
-  choreIsComplete: {
-    type: Boolean,
-  },
-  choreCompleteDates: [{
+  choreCompleteDate: [{
     type: Date,
   }],
   choreReward: [{

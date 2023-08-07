@@ -34,12 +34,8 @@ const typeDefs = `
     _id: ID
     choreTitle: String!
     choreText: String
-    choreIsMultiple: Boolean
     choreDueDate: [String]
-    choreDueTime: String
-    choreAmount: Int
-    choreIsComplete: Boolean
-    choreCompleteDates: [String]
+    choreCompleteDate: [String]
     choreReward: [Reward]
     chorePoints: Int
     choreCons: [Consequence]
@@ -52,8 +48,6 @@ const typeDefs = `
     rewardCost: Int
     rewardCount: Int
     rewardMaxCount: Int
-    rewardIsSpent: Boolean
-    rewardExpiryDate: String
   }
 
   type Consequence {
@@ -62,7 +56,6 @@ const typeDefs = `
     consText: String
     ConsCount: Int
     consCost: Int
-    consIsSpent: Boolean
   }
 
   input FamilyInput {
@@ -81,8 +74,7 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
-    parentPin: Int!
-    parentCode: String
+    parentFamily: ID
   }
 
   input ChildInput{
@@ -95,9 +87,7 @@ const typeDefs = `
   input ChoreInput {
     choreTitle: String!
     choreText: String
-    choreIsMultiple: Boolean
     choreDueDate: [String]
-    choreDueTime: [String]
     choreReward: [ID]
     chorePoints: Int
     choreCons: [ID]
@@ -109,8 +99,6 @@ const typeDefs = `
     rewardCost: Int
     rewardCount: Int
     rewardMaxCount: Int
-    rewardIsSpent: Boolean
-    rewardExpiryDate: String
   }
 
   input ConsequenceInput {
@@ -118,28 +106,22 @@ const typeDefs = `
     consText: String
     consCount: Int
     consCost: Int
-    consIsSpent: Boolean
   }
 
   type Query {
-    chores: [Chore]
-    oneChore(choreId: ID!): Chore
-    parents: [Parent]
+    family(familyId: ID!): Family
+    parents(familyId: ID!): [Parent]
     oneParent(parentId: ID!): Parent
-    childs: [Child]
+    childs(familyId: ID!): [Child]
     oneChild(childId: ID!): Child
-    rewards: [Reward]
+    chores(familyId: ID!): [Chore]
+    oneChore(choreId: ID!): Chore
+    rewards(familyId: ID!): [Reward]
     oneReward(rewardId: ID!): Reward
-    consequences: [Consequence]
+    consequences(familyId: ID!): [Consequence]
     oneConsequence(consId: ID!): Consequence
   }
-  
-  type Mutation {
-    createParent(input: ParentInput!): Parent!
-    createChild(input: ChildInput!): Child!
-    createReward(input: RewardInput!): Reward!
-    createConsequence(input: ConsequenceInput!): Consequence!    
-  }`;
+`;
 
 
 // TODO: define queries and mutations

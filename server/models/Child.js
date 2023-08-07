@@ -9,14 +9,6 @@ const childSchema = new Schema({
         trim: true,
         match: /[a-z]|[A-Z]/,
     },
-    childSibling: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Child'
-    }],
-    childParent: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Parent'
-    }],
     childChore: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'

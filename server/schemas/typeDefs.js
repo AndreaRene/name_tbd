@@ -1,5 +1,15 @@
 const typeDefs = `
-
+    type Family {
+      _id: ID
+      familyName: String!
+      familyPasscode: String!
+      familyParents: [String]!
+      familyChildren: [String]
+      familyChores: [String]
+      familyRewards: [String]
+      familyCons: [String]
+    }
+    
     type Parent {
       _id: ID
       parentUsername: String!
@@ -7,16 +17,12 @@ const typeDefs = `
       parentPhone: String
       parentPassword: String!
       parentPin: Int!
-      parentChild: [Child]
-      parentCoParent: [Parent]
       parentCode: String
     }
 
     type Child{
       _id: ID
       childUsername: String!
-      childParent: [Parent]!
-      childSibling: [Child]
       childChore: [Chore]
       childReward: [Reward]
       childCons: [Consequence]
@@ -64,14 +70,10 @@ const typeDefs = `
     parentPassword: String!
     parentPin: Int!
     parentCode: String
-    parentChild: [ID]
-    parentCoParent: [ID]
   }
 
   input ChildInput{
       childUsername: String!
-      childParent: [ID]!
-      childSibling: [ID]
       childChore: [ID]
       childReward: [ID]
       childCons: [ID]

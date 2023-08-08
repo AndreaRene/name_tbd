@@ -35,7 +35,7 @@ const typeDefs = `
     choreTitle: String!
     choreText: String
     choreDueDate: [String]
-    choreCompleteDate: [String]
+    choreCompletedDate: [String]
     choreReward: [Reward]
     chorePoints: Int
     choreCons: [Consequence]
@@ -54,7 +54,7 @@ const typeDefs = `
     _id: ID
     consTitle: String!
     consText: String
-    ConsCount: Int
+    consCount: Int
     consCost: Int
   }
 
@@ -67,7 +67,6 @@ const typeDefs = `
     familyReward: [ID]
     familyCons: [ID]
     }
-  }
 
   input ParentInput{
     parentUsername: String!

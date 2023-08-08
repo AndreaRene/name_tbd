@@ -15,7 +15,7 @@ const choreSchema = new Schema({
   choreDueDate: [{
     type: Date,
   }],
-  choreCompleteDate: [{
+  choreCompletedDate: [{
     type: Date,
   }],
   choreReward: [{

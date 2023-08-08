@@ -72,6 +72,15 @@ const resolvers = {
     },
 
     Mutation: {
+        createFamily: async (_, { input }) => {
+            try {
+                const {
+                    familyName,
+                    familyPasscode,
+                    familyParent
+                }
+            }
+        },
         createParent: async (_, { input }) => {
             try {
                 const {
@@ -79,10 +88,7 @@ const resolvers = {
                     parentEmail,
                     parentPhone,
                     parentPassword,
-                    parentPin,
-                    parentChild,
-                    parentCoParent,
-                    parentCode,
+                    parentFamily
                 } = input;
         
                 const newParent = await Parent.create({
@@ -90,10 +96,7 @@ const resolvers = {
                     parentEmail,
                     parentPhone,
                     parentPassword,
-                    parentPin,
-                    parentChild,
-                    parentCoParent,
-                    parentCode,
+                    parentFamily
                 });
                 return newParent;
             } catch (error) {
@@ -105,8 +108,7 @@ const resolvers = {
             try {
                 const {
                     childUsername,
-                    childParent,
-                    childSibling,
+                    childFamily,
                     childChore,
                     childReward,
                     childCons
@@ -114,8 +116,7 @@ const resolvers = {
 
                 const newChild = await Child.create({
                     childUsername,
-                    childParent,
-                    childSibling,
+                    childFamily,
                     childChore,
                     childReward,
                     childCons
@@ -158,7 +159,7 @@ const resolvers = {
                 const {
                     consTitle,
                     consText,
-                    ConsCount,
+                    consCount,
                     consCost,
                     consIsSpent
                 } = input;
@@ -166,7 +167,7 @@ const resolvers = {
                 const newConsequence = await Consequence.create({
                     consTitle,
                     consText,
-                    ConsCount,
+                    consCount,
                     consCost,
                     consIsSpent
                 });

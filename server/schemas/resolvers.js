@@ -8,32 +8,63 @@ const {
 
 const resolvers = {
     Query: {
-        chores: async () => {
-            return Chore.find();
-        },
-        oneChore: async (parent, { choreId }) => {
-            return Chore.findOne({ _id: choreId });
-        },
-        parents: async () => {
-            return Parent.find()
+        
+        parents: async (parent, { familyId }) => {
+            return Parent.find( { familyId })
         },
         oneParent: async (parent, { parentId }) => {
             return Parent.findOne({_id: parentId})
         },
-        childs: async () => {
-            return Child.find()
+        childs: async (parent, { familyId }) => {
+            return Child.find( { familyId })
         },
         oneChild: async (parent, { childId }) => {
             return Child.findOne({_id: childId})
         },
-        rewards: async () => {
-            return Reward.find()
+        chores: async (parent, { entityId, entityType }) => {
+
+            let filter = {};
+      
+            if (entityType === 'family') {
+                filter = { familyId: entityId };
+            } else if (entityType === 'child') {
+                filter = { childId: entityId };
+            } else if (entityType === 'chore') {
+                filter = { choreId: entityId };
+            }
+            return Chore.find(filter);
+        },
+        oneChore: async (parent, { choreId }) => {
+            return Chore.findOne({ _id: choreId });
+        },
+        rewards: async (parent, { entityId, entityType }) => {
+
+            let filter = {};
+      
+            if (entityType === 'family') {
+                filter = { familyId: entityId };
+            } else if (entityType === 'child') {
+                filter = { childId: entityId };
+            } else if (entityType === 'chore') {
+                filter = { choreId: entityId };
+            }
+            return Reward.find(filter);
         },
         oneReward: async (parent, { rewardId }) => {
             return Reward.findOne({_id: rewardId})
         },
-        consequences: async () => {
-            return Consequence.find()
+        consequences: async (parent, { entityId, entityType }) => {
+
+            let filter = {};
+      
+            if (entityType === 'family') {
+                filter = { familyId: entityId };
+            } else if (entityType === 'child') {
+                filter = { childId: entityId };
+            } else if (entityType === 'chore') {
+                filter = { choreId: entityId };
+            }
+            return Consequence.find(filter);
         },
         oneConsequence: async (parent, { consId }) => {
             return Consequence.findOne({_id: consId})

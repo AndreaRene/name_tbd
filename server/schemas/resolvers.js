@@ -1,11 +1,4 @@
-const {
-    Chore,
-    Parent,
-    Child,
-    Reward,
-    Consequence       
-} = require('../models');
-const Family = require('../models/Family');
+import { Family, Chore, Parent, Child, Reward, Consequence } from '../models';
 
 const resolvers = {
     Query: {
@@ -205,4 +198,4 @@ const resolvers = {
     }
 };
 
-    module.exports = resolvers;
+    export default resolvers;

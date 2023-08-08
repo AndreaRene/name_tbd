@@ -28,7 +28,6 @@ const typeDefs = `
       childChore: [Chore]
       childReward: [Reward]
       childCons: [Consequence]
-      childFamily: Family
     }
 
     type Chore {

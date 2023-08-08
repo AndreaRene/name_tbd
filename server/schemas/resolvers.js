@@ -10,16 +10,16 @@ const resolvers = {
     Query: {
         
         parents: async (parent, { familyId }) => {
-            return Parent.find( { familyId })
+            return Parent.find({ familyId });
         },
         oneParent: async (parent, { parentId }) => {
-            return Parent.findOne({_id: parentId})
+            return Parent.findOne({ _id: parentId });
         },
         childs: async (parent, { familyId }) => {
-            return Child.find( { familyId })
+            return Child.find({ familyId });
         },
         oneChild: async (parent, { childId }) => {
-            return Child.findOne({_id: childId})
+            return Child.findOne({ _id: childId });
         },
         chores: async (parent, { entityId, entityType }) => {
 
@@ -51,7 +51,7 @@ const resolvers = {
             return Reward.find(filter);
         },
         oneReward: async (parent, { rewardId }) => {
-            return Reward.findOne({_id: rewardId})
+            return Reward.findOne({ _id: rewardId });
         },
         consequences: async (parent, { entityId, entityType }) => {
 
@@ -67,30 +67,41 @@ const resolvers = {
             return Consequence.find(filter);
         },
         oneConsequence: async (parent, { consId }) => {
-            return Consequence.findOne({_id: consId})
+            return Consequence.findOne({ _id: consId });
         }
     },
 
     Mutation: {
-        createFamilyAndParent: async (_, { familyInput, parentInput }) => {
+        createFamilyAndParent: async (_, { input }) => {
             try {
-                const newFamily = await Family.create(familyInput);
+                const {
+                    familyName,
+                    familyPasscode,
+                    parentUsername,
+                    parentEmail,
+                    parentPhone,
+                    parentPassword
+                } = input;
 
-                const newParent = await Parent.create({
-                    ...parentInput,
-                    parentFamily: newFamily._id  
+                const newFamily = await Family.create({
+                    familyName,
+                    familyPasscode
                 });
 
-                return {
-                    family: newFamily,
-                    parent: newParent
-                };
+                const newParent = await Parent.create({
+                    parentUsername,
+                    parentEmail,
+                    parentPhone,
+                    parentPassword,
+                    parentFamily: newFamily._id
+                });
+
+                return { newFamily, newParent };
             } catch (error) {
-                console.error("Error while creating family and parent:", error);
-                throw new Error("Failed to create family and parent.");
+                console.error("Error while adding family and parent:", error);
+                throw new Error("Failed to add family and parent.");
             }
         },
-    },
         
         createParent: async (_, { input }) => {
             try {
@@ -186,9 +197,9 @@ const resolvers = {
             } catch (error) {
                 console.error("Error while adding consequence:", error);
                 throw new Error("Failed to add consequence.");
-            }
-        }, 
-}
+            };
+        }
+    }
+};
 
-
-module.exports = resolvers;
+    module.exports = resolvers;

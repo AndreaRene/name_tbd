@@ -5,10 +5,13 @@ const {
     Reward,
     Consequence       
 } = require('../models');
+const Family = require('../models/Family');
 
 const resolvers = {
     Query: {
-        
+        family: async (parent, { familyId }) => {
+            return Family.findOne( {_id: familyId })
+        },      
         parents: async (parent, { familyId }) => {
             return Parent.find({ familyId });
         },
@@ -72,7 +75,7 @@ const resolvers = {
     },
 
     Mutation: {
-        createFamilyAndParent: async (_, { input }) => {
+        createFamily: async (_, { input }) => {
             try {
                 const {
                     familyName,

@@ -3,6 +3,8 @@ const typeDefs = `
       _id: ID
       familyName: String!
       familyPasscode: String!
+      parentJoinCode: String
+      childJoinCode: String
       familyParent: [Parent]!
       familyChild: [Child]
       familyChore: [Chore]
@@ -16,8 +18,6 @@ const typeDefs = `
       parentEmail: String!
       parentPhone: String
       parentPassword: String!
-      parentPin: Int!
-      parentCode: String
       parentFamily: Family
     }
 
@@ -28,6 +28,7 @@ const typeDefs = `
       childChore: [Chore]
       childReward: [Reward]
       childCons: [Consequence]
+      childFamily: Family
     }
 
     type Chore {
@@ -36,7 +37,7 @@ const typeDefs = `
     choreText: String
     choreDueDate: [String]
     choreCompletedDate: [String]
-    choreReward: [Reward]
+    choreReward: [Reward]L
     chorePoints: Int
     choreCons: [Consequence]
   }

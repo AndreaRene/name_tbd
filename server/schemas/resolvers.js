@@ -72,15 +72,26 @@ const resolvers = {
     },
 
     Mutation: {
-        createFamily: async (_, { input }) => {
+        createFamilyAndParent: async (_, { familyInput, parentInput }) => {
             try {
-                const {
-                    familyName,
-                    familyPasscode,
-                    familyParent
-                }
+                const newFamily = await Family.create(familyInput);
+
+                const newParent = await Parent.create({
+                    ...parentInput,
+                    parentFamily: newFamily._id  
+                });
+
+                return {
+                    family: newFamily,
+                    parent: newParent
+                };
+            } catch (error) {
+                console.error("Error while creating family and parent:", error);
+                throw new Error("Failed to create family and parent.");
             }
         },
+    },
+        
         createParent: async (_, { input }) => {
             try {
                 const {
@@ -177,7 +188,7 @@ const resolvers = {
                 throw new Error("Failed to add consequence.");
             }
         }, 
-    }
 }
+
 
 module.exports = resolvers;

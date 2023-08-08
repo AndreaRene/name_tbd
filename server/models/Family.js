@@ -13,10 +13,12 @@ const familySchema = new Schema({
         type: String,
         require: true,  
     },
-    familyJoinCode: [{
-        type: String,
-        require: true
-    }],
+    parentJoinCode: {
+        type: String
+    },
+    childJoinCode: {
+        type: String
+    },
     familyParent: [{
         type: Schema.Types.ObjectId,
         ref: 'Parent'

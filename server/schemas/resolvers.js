@@ -1,4 +1,11 @@
-import { Family, Chore, Parent, Child, Reward, Consequence } from '../models';
+const {
+    Family,
+    Chore,
+    Parent,
+    Child,
+    Reward,
+    Consequence
+} = require('../models');
 
 const createObject = async (Model, input) => {
     try {
@@ -21,6 +28,7 @@ const queryObjects = async (Model, filter) => {
 
 const resolvers = {
     Query: {
+        families: async () => queryObjects(Family, {}),
         family: async (parent, { familyId }) => queryObjects(Family, { _id: familyId }),
         parents: async (parent, { familyId }) => queryObjects(Parent, { familyId }),
         oneParent: async (parent, { parentId }) => queryObjects(Parent, { _id: parentId }),
@@ -50,7 +58,7 @@ const resolvers = {
     },
 };
 
-export default resolvers;
+module.exports = resolvers;
     
 // {
 //         createFamily: async (_, { input }) => {

@@ -36,7 +36,7 @@ const typeDefs = `
     choreText: String
     choreDueDate: [String]
     choreCompletedDate: [String]
-    choreReward: [Reward]L
+    choreReward: [Reward]
     chorePoints: Int
     choreCons: [Consequence]
   }
@@ -108,6 +108,7 @@ const typeDefs = `
   }
 
   type Query {
+    families: [Family]
     family(familyId: ID!): Family
     parents(familyId: ID!): [Parent]
     oneParent(parentId: ID!): Parent

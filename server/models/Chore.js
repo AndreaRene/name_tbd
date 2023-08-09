@@ -22,7 +22,7 @@ const choreSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Reward'
   }],
-  ChorePoints: {
+  chorePoints: {
     type: Number,
   },
   choreCons: [{

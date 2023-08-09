@@ -7,6 +7,16 @@ const {
     Consequence
 } = require('../models');
 
+const queryObjects = async (Model, filter) => {
+    try {
+      console.log(Model, filter)
+      return await Model.find(filter);
+  } catch (error) {
+    console.error(`Error while querying ${Model.modelName.toLowerCase()}:`, error);
+    throw new Error(`Failed to query ${Model.modelName.toLowerCase()}.`);
+  }
+};
+
 const createObject = async (Model, input) => {
     try {
         const newObject = await Model.create(input);
@@ -17,19 +27,14 @@ const createObject = async (Model, input) => {
     }
 };
 
-const queryObjects = async (Model, filter) => {
-  try {
-    return await Model.find(filter);
-  } catch (error) {
-    console.error(`Error while querying ${Model.modelName.toLowerCase()}:`, error);
-    throw new Error(`Failed to query ${Model.modelName.toLowerCase()}.`);
-  }
-};
-
 const resolvers = {
     Query: {
         families: async () => queryObjects(Family, {}),
-        family: async (parent, { familyId }) => queryObjects(Family, { _id: familyId }),
+        family: async (_, { familyId }) => {
+            console.log(Family, { _id: familyId });
+            return queryObjects(Family, { _id: familyId });
+        },
+        parentsAll: async () => queryObjects(Parent, {}),
         parents: async (parent, { familyId }) => queryObjects(Parent, { familyId }),
         oneParent: async (parent, { parentId }) => queryObjects(Parent, { _id: parentId }),
         childs: async (parent, { familyId }) => queryObjects(Child, { familyId }),

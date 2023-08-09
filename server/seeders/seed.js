@@ -20,10 +20,10 @@ const consdSeeds = require('./consSeeds.json');
 db.once('open', async () => {
   try {
     await cleanDB('Family', 'families');
-    await cleanDB('Consequence', 'concequences');
+    await cleanDB('Consequence', 'consequences');
     await cleanDB('Reward', 'rewards');
     await cleanDB('Chore', 'chores');
-    await cleanDB('Child', 'childs');
+    await cleanDB('Child', 'children');
     await cleanDB('Parent', 'parents');
 
     await Family.create(FamilySeeds);
@@ -33,7 +33,6 @@ db.once('open', async () => {
     await Child.create(childSeeds);
     await Parent.create(parentSeeds);
 
-    
   } catch (err) {
     console.error(err);
     process.exit(1);

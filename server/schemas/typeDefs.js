@@ -111,6 +111,7 @@ const typeDefs = `
     families: [Family]
     family(familyId: ID!): Family
     parents(familyId: ID!): [Parent]
+    parentsAll: [Parent]
     oneParent(parentId: ID!): Parent
     childs(familyId: ID!): [Child]
     oneChild(childId: ID!): Child

@@ -3,7 +3,7 @@ const { Schema, model } = require('mongoose');
 const familySchema = new Schema({
     familyName: {
         type: String,
-        require: true,
+        // require: true,
         minlength: 5,
         maxlength: 20,
         trim: true,
@@ -11,7 +11,7 @@ const familySchema = new Schema({
     },
     familyPasscode: {
         type: String,
-        require: true,  
+        // require: true,  
     },
     parentJoinCode: {
         type: String

@@ -1,37 +1,22 @@
 [
     {
-        "parentUsername": "ParentUser1", 
-        "parentEmail": "p_user1@email.com",
-        "parentPhone": "1111111111",
-        "parentPassword": "password1",
-        "parentPin": 1111
+        "parentUsername": "ParentUser1",
+        "parentPassword": "password1"
     },
     {
-        "parentUsername": "ParentUser2", 
-        "parentEmail": "p_user2@email.com",
-        "parentPhone": "2222222222",
-        "parentPassword": "password2",
-        "parentPin": 2222
+        "parentUsername": "ParentUser2",
+        "parentPassword": "password2"
     },
     {
-        "parentUsername": "ParentUser3", 
-        "parentEmail": "p_user3@email.com",
-        "parentPhone": "3333333333",
-        "parentPassword": "password3",
-        "parentPin": 3333
+        "parentUsername": "ParentUser3",
+        "parentPassword": "password3"
     },
     {
-        "parentUsername": "ParentUser4", 
-        "parentEmail": "p_user4@email.com",
-        "parentPhone": "4444444444",
-        "parentPassword": "password4",
-        "parentPin": 4444
+        "parentUsername": "ParentUser4",
+        "parentPassword": "password4"
     },
     {
-        "parentUsername": "ParentUser5", 
-        "parentEmail": "p_user5@email.com",
-        "parentPhone": "5555555555",
-        "parentPassword": "password5",
-        "parentPin": 5555
+        "parentUsername": "ParentUser5",
+        "parentPassword": "password5"
     }
 ]

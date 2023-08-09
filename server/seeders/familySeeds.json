@@ -1,0 +1,15 @@
+[
+    {
+        "familyName" : "Family1",
+        "familyPasscode" : "Passcode1"
+    },{
+        "familyName" : "Family2",
+        "familyPasscode" : "Passcode2"
+    },{
+        "familyName" : "Family3",
+        "familyPasscode" : "Passcode3"
+    },{
+        "familyName" : "Family4",
+        "familyPasscode" : "Passcode4"
+    }
+]

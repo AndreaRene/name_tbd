@@ -1,27 +1,15 @@
 [
     {
         "consTitle" : "ConsTitle1",
-        "consText" : "ConstText1",
-        "consCount" : 1,
-        "consCost" : 1,
-        "consIsSpent" : false
+        "consText" : "ConstText1"
     },{
         "consTitle" : "ConsTitle2",
-        "consText" : "ConstText2",
-        "consCount" : 2,
-        "consCost" : 2,
-        "consIsSpent" : true
+        "consText" : "ConstText2"
     },{
         "consTitle" : "ConsTitle3",
-        "consText" : "ConstText3",
-        "consCount" : 3,
-        "consCost" : 3,
-        "consIsSpent" : false
+        "consText" : "ConstText3"
     },{
         "consTitle" : "ConsTitle4",
-        "consText" : "ConstText4",
-        "consCount" : 4,
-        "consCost" : 4,
-        "consIsSpent" : true
+        "consText" : "ConstText4"
     }
 ]

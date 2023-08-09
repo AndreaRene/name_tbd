@@ -21,25 +21,13 @@ const queryObjects = async (Model, filter) => {
 
 const resolvers = {
     Query: {
-        family: async (parent, { familyId }) => {
-            return Family.findOne( {_id: familyId })
-        },      
-        parents: async (parent, { familyId }) => {
-            return Parent.find({ familyId });
-        },
-        oneParent: async (parent, { parentId }) => {
-            return Parent.findOne({ _id: parentId });
-        },
-        childs: async (parent, { familyId }) => {
-            return Child.find({ familyId });
-        },
-        oneChild: async (parent, { childId }) => {
-            return Child.findOne({ _id: childId });
-        },
+        family: async (parent, { familyId }) => queryObjects(Family, { _id: familyId }),
+        parents: async (parent, { familyId }) => queryObjects(Parent, { familyId }),
+        oneParent: async (parent, { parentId }) => queryObjects(Parent, { _id: parentId }),
+        childs: async (parent, { familyId }) => queryObjects(Child, { familyId }),
+        oneChild: async (parent, { childId }) => queryObjects(Child, { _id: childId }),
         chores: async (parent, { entityId, entityType }) => {
-
             let filter = {};
-      
             if (entityType === 'family') {
                 filter = { familyId: entityId };
             } else if (entityType === 'child') {
@@ -47,43 +35,9 @@ const resolvers = {
             } else if (entityType === 'chore') {
                 filter = { choreId: entityId };
             }
-            return Chore.find(filter);
+            
+            return queryObjects(Chore, filter);
         },
-        oneChore: async (parent, { choreId }) => {
-            return Chore.findOne({ _id: choreId });
-        },
-        rewards: async (parent, { entityId, entityType }) => {
-
-            let filter = {};
-      
-            if (entityType === 'family') {
-                filter = { familyId: entityId };
-            } else if (entityType === 'child') {
-                filter = { childId: entityId };
-            } else if (entityType === 'chore') {
-                filter = { choreId: entityId };
-            }
-            return Reward.find(filter);
-        },
-        oneReward: async (parent, { rewardId }) => {
-            return Reward.findOne({ _id: rewardId });
-        },
-        consequences: async (parent, { entityId, entityType }) => {
-
-            let filter = {};
-      
-            if (entityType === 'family') {
-                filter = { familyId: entityId };
-            } else if (entityType === 'child') {
-                filter = { childId: entityId };
-            } else if (entityType === 'chore') {
-                filter = { choreId: entityId };
-            }
-            return Consequence.find(filter);
-        },
-        oneConsequence: async (parent, { consId }) => {
-            return Consequence.findOne({ _id: consId });
-        }
     },
 
     Mutation: {
@@ -215,3 +169,69 @@ export default resolvers;
 //             };
 //         }
 //     }
+
+
+
+// family: async (parent, { familyId }) => {
+//             return Family.findOne( {_id: familyId })
+//         },      
+//         parents: async (parent, { familyId }) => {
+//             return Parent.find({ familyId });
+//         },
+//         oneParent: async (parent, { parentId }) => {
+//             return Parent.findOne({ _id: parentId });
+//         },
+//         childs: async (parent, { familyId }) => {
+//             return Child.find({ familyId });
+//         },
+//         oneChild: async (parent, { childId }) => {
+//             return Child.findOne({ _id: childId });
+//         },
+//         chores: async (parent, { entityId, entityType }) => {
+
+//             let filter = {};
+      
+//             if (entityType === 'family') {
+//                 filter = { familyId: entityId };
+//             } else if (entityType === 'child') {
+//                 filter = { childId: entityId };
+//             } else if (entityType === 'chore') {
+//                 filter = { choreId: entityId };
+//             }
+//             return Chore.find(filter);
+//         },
+//         oneChore: async (parent, { choreId }) => {
+//             return Chore.findOne({ _id: choreId });
+//         },
+//         rewards: async (parent, { entityId, entityType }) => {
+
+//             let filter = {};
+      
+//             if (entityType === 'family') {
+//                 filter = { familyId: entityId };
+//             } else if (entityType === 'child') {
+//                 filter = { childId: entityId };
+//             } else if (entityType === 'chore') {
+//                 filter = { choreId: entityId };
+//             }
+//             return Reward.find(filter);
+//         },
+//         oneReward: async (parent, { rewardId }) => {
+//             return Reward.findOne({ _id: rewardId });
+//         },
+//         consequences: async (parent, { entityId, entityType }) => {
+
+//             let filter = {};
+      
+//             if (entityType === 'family') {
+//                 filter = { familyId: entityId };
+//             } else if (entityType === 'child') {
+//                 filter = { childId: entityId };
+//             } else if (entityType === 'chore') {
+//                 filter = { choreId: entityId };
+//             }
+//             return Consequence.find(filter);
+//         },
+//         oneConsequence: async (parent, { consId }) => {
+//             return Consequence.findOne({ _id: consId });
+//         }

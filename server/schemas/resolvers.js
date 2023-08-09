@@ -1,5 +1,24 @@
 import { Family, Chore, Parent, Child, Reward, Consequence } from '../models';
 
+const createObject = async (Model, input) => {
+    try {
+        const newObject = await Model.create(input);
+        return newObject;
+    } catch (error) {
+        console.error(`Error while adding ${Model.modelName.toLowerCase()}:`, error);
+        throw new Error(`Failed to add ${Model.modelName.toLowerCase()}.`);
+    }
+};
+
+const queryObjects = async (Model, filter) => {
+  try {
+    return await Model.find(filter);
+  } catch (error) {
+    console.error(`Error while querying ${Model.modelName.toLowerCase()}:`, error);
+    throw new Error(`Failed to query ${Model.modelName.toLowerCase()}.`);
+  }
+};
+
 const resolvers = {
     Query: {
         family: async (parent, { familyId }) => {
@@ -68,134 +87,131 @@ const resolvers = {
     },
 
     Mutation: {
-        createFamily: async (_, { input }) => {
-            try {
-                const {
-                    familyName,
-                    familyPasscode,
-                    parentUsername,
-                    parentEmail,
-                    parentPhone,
-                    parentPassword
-                } = input;
-
-                const newFamily = await Family.create({
-                    familyName,
-                    familyPasscode
-                });
-
-                const newParent = await Parent.create({
-                    parentUsername,
-                    parentEmail,
-                    parentPhone,
-                    parentPassword,
-                    parentFamily: newFamily._id
-                });
-
-                return { newFamily, newParent };
-            } catch (error) {
-                console.error("Error while adding family and parent:", error);
-                throw new Error("Failed to add family and parent.");
-            }
-        },
-        
-        createParent: async (_, { input }) => {
-            try {
-                const {
-                    parentUsername,
-                    parentEmail,
-                    parentPhone,
-                    parentPassword,
-                    parentFamily
-                } = input;
-        
-                const newParent = await Parent.create({
-                    parentUsername,
-                    parentEmail,
-                    parentPhone,
-                    parentPassword,
-                    parentFamily
-                });
-                return newParent;
-            } catch (error) {
-                console.error("Error while adding parent:", error);
-                throw new Error("Failed to add parent.");
-            }
-        },
-        createChild: async (_, { input }) => {
-            try {
-                const {
-                    childUsername,
-                    childFamily,
-                    childChore,
-                    childReward,
-                    childCons
-                } = input;
-
-                const newChild = await Child.create({
-                    childUsername,
-                    childFamily,
-                    childChore,
-                    childReward,
-                    childCons
-                });
-                return newChild;
-            } catch (error) {
-                console.error("Error while adding child:", error);
-                throw new Error("Failed to add child.");
-            }
-        },
-        createReward: async (_, { input }) => {
-            try {
-                const {
-                    rewardTitle,
-                    rewardText,
-                    rewardCost,
-                    rewardCount,
-                    rewardMaxCount,
-                    rewardIsSpent,
-                    rewardExpyDate
-                } = input;
-        
-                const newReward = await Reward.create({
-                    rewardTitle,
-                    rewardText,
-                    rewardCost,
-                    rewardCount,
-                    rewardMaxCount,
-                    rewardIsSpent,
-                    rewardExpyDate
-                });
-                return newReward;
-            } catch (error) {
-                console.error("Error while adding reward:", error);
-                throw new Error("Failed to add reward.");
-            }
-        },
-        createConsequence: async (_, { input }) => {
-            try {
-                const {
-                    consTitle,
-                    consText,
-                    consCount,
-                    consCost,
-                    consIsSpent
-                } = input;
-        
-                const newConsequence = await Consequence.create({
-                    consTitle,
-                    consText,
-                    consCount,
-                    consCost,
-                    consIsSpent
-                });
-                return newConsequence;
-            } catch (error) {
-                console.error("Error while adding consequence:", error);
-                throw new Error("Failed to add consequence.");
-            };
-        }
-    }
+        createFamily: (_, { input }) => createObject(Family, input),
+        createParent: (_, { input }) => createObject(Parent, input),
+        createChild: (_, { input }) => createObject(Child, input),
+        createChore: (_, { input }) => createObject(Chore, input),
+        createReward: (_, { input }) => createObject(Reward, input),
+        createConsequence: (_, { input }) => createObject(Consequence, input),
+    },
 };
 
-    export default resolvers;
+export default resolvers;
+    
+// {
+//         createFamily: async (_, { input }) => {
+//             try {
+//                 const {
+//                     familyName,
+//                     familyPasscode
+//                 } = input;
+
+//                 const newFamily = await Family.create({
+//                     familyName,
+//                     familyPasscode
+//                 });
+
+//                 return { newFamily };
+//             } catch (error) {
+//                 console.error("Error while adding family:", error);
+//                 throw new Error("Failed to add family.");
+//             }
+//         },
+        
+//         createParent: async (_, { input }) => {
+//             try {
+//                 const {
+//                     parentUsername,
+//                     parentEmail,
+//                     parentPhone,
+//                     parentPassword,
+//                     parentFamily
+//                 } = input;
+        
+//                 const newParent = await Parent.create({
+//                     parentUsername,
+//                     parentEmail,
+//                     parentPhone,
+//                     parentPassword,
+//                     parentFamily
+//                 });
+//                 return newParent;
+//             } catch (error) {
+//                 console.error("Error while adding parent:", error);
+//                 throw new Error("Failed to add parent.");
+//             }
+//         },
+//         createChild: async (_, { input }) => {
+//             try {
+//                 const {
+//                     childUsername,
+//                     childFamily,
+//                     childChore,
+//                     childReward,
+//                     childCons
+//                 } = input;
+
+//                 const newChild = await Child.create({
+//                     childUsername,
+//                     childFamily,
+//                     childChore,
+//                     childReward,
+//                     childCons
+//                 });
+//                 return newChild;
+//             } catch (error) {
+//                 console.error("Error while adding child:", error);
+//                 throw new Error("Failed to add child.");
+//             }
+//         },
+//         createReward: async (_, { input }) => {
+//             try {
+//                 const {
+//                     rewardTitle,
+//                     rewardText,
+//                     rewardCost,
+//                     rewardCount,
+//                     rewardMaxCount,
+//                     rewardIsSpent,
+//                     rewardExpyDate
+//                 } = input;
+        
+//                 const newReward = await Reward.create({
+//                     rewardTitle,
+//                     rewardText,
+//                     rewardCost,
+//                     rewardCount,
+//                     rewardMaxCount,
+//                     rewardIsSpent,
+//                     rewardExpyDate
+//                 });
+//                 return newReward;
+//             } catch (error) {
+//                 console.error("Error while adding reward:", error);
+//                 throw new Error("Failed to add reward.");
+//             }
+//         },
+//         createConsequence: async (_, { input }) => {
+//             try {
+//                 const {
+//                     consTitle,
+//                     consText,
+//                     consCount,
+//                     consCost,
+//                     consIsSpent
+//                 } = input;
+        
+//                 const newConsequence = await Consequence.create({
+//                     consTitle,
+//                     consText,
+//                     consCount,
+//                     consCost,
+//                     consIsSpent
+//                 });
+//                 return newConsequence;
+//             } catch (error) {
+//                 console.error("Error while adding consequence:", error);
+//                 throw new Error("Failed to add consequence.");
+//             };
+//         }
+//     }

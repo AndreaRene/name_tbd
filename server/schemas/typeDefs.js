@@ -120,6 +120,15 @@ const typeDefs = `
     consequences(familyId: ID!): [Consequence]
     oneConsequence(consId: ID!): Consequence
   }
+
+  type Mutation {
+    createFamily(input: FamilyInput!): Family
+    createParent(input: ParentInput!): Parent
+    createChild(input: ChildInput): Child
+    createChore(input: ChoreInput): Chore
+    createReward(input: RewardInput): Reward
+    createConsequence(input: ConsequenceInput): Consequence
+  }
 `;
 
 

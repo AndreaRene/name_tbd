@@ -12,7 +12,7 @@ const {
 
 const FamilySeeds = require('./familySeeds.json');
 const parentSeeds = require('./parentSeeds.json');
-const childSeeds = require('./childSeeds.json');
+const childreneeds = require('./childreneeds.json');
 const choreSeeds = require('./choreSeeds.json');
 const rewardSeeds = require('./rewardSeeds.json');
 const consdSeeds = require('./consSeeds.json');
@@ -30,7 +30,7 @@ db.once('open', async () => {
     await Consequence.create(consdSeeds);
     await Reward.create(rewardSeeds);
     await Chore.create(choreSeeds);
-    await Child.create(childSeeds);
+    await Child.create(childreneeds);
     await Parent.create(parentSeeds);
 
   } catch (err) {

@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const childSchema = new Schema({
+const childrenchema = new Schema({
     childUsername: {
         type: String,
         require: true,
@@ -27,6 +27,6 @@ const childSchema = new Schema({
     }],
 });
 
-const Child = model('Child', childSchema);
+const Child = model('Child', childrenchema);
 
 module.exports = Child;

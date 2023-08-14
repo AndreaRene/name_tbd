@@ -30,7 +30,7 @@ const {
 const resolvers = {
 
     Query: {
-        families: async () => Family.find(),
+        allFamilies: async () => Family.find(),
         family: async (_, { familyId }) => {
             console.log('Log:', familyId);
             return Family.findOne({_id: familyId}).populate('parents')
@@ -38,16 +38,21 @@ const resolvers = {
         parents: async (_, { familyId }) => {
             const params = familyId ? { _id: familyId } : {};
             return Parent.find(params)
-        }
+        },
+        allParents: async () => Parent.find(),
+        oneParent: async (_, { parentId }) => {
+            return Parent.findOne({_id: parentId})
+        },
+
          
     },
     // Query: {
-    //     families: async () => queryObjects(Family, {}),
+    //     allFamilies: async () => queryObjects(Family, {}),
     //     family: async (_, { familyId }) => queryObjects( Family, { _id: familyId }),
-    //     parentsAll: async () => queryObjects(Parent, {}),
+    //     allParents: async () => queryObjects(Parent, {}),
     //     parents: async (parent, { familyId }) => queryObjects(Parent, { familyId }),
     //     oneParent: async (parent, { parentId }) => queryObjects(Parent, { _id: parentId }),
-    //     childs: async (parent, { familyId }) => queryObjects(Child, { familyId }),
+    //     children: async (parent, { familyId }) => queryObjects(Child, { familyId }),
     //     oneChild: async (parent, { childId }) => queryObjects(Child, { _id: childId }),
     //     chores: async (parent, { entityId, entityType }) => {
     //         let filter = {};

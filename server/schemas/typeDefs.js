@@ -18,7 +18,6 @@ const typeDefs = `
       parentEmail: String!
       parentPhone: String
       parentPassword: String!
-      parentFamily: Family!
     }
 
     type Child{
@@ -73,7 +72,6 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
-    parentFamily: ID
   }
 
   input ChildInput{
@@ -108,12 +106,13 @@ const typeDefs = `
   }
 
   type Query {
-    families: [Family]
+    allFamilies: [Family]
     family(familyId: ID!): Family
+    allParents: [Parent]
     parents(familyId: ID!): [Parent]
-    parentsAll: [Parent]
     oneParent(parentId: ID!): Parent
-    childs(familyId: ID!): [Child]
+    allChildren: [Child]
+    children(familyId: ID!): [Child]
     oneChild(childId: ID!): Child
     chores(familyId: ID!): [Chore]
     oneChore(choreId: ID!): Chore

@@ -6,4 +6,4 @@ const Reward = require('./Reward');
 const Consequence = require('./Consequence');
 
 
-module.exports = { Chore, Parent, Child, Reward, Consequence, Family };
+module.exports = { Family, Parent, Child, Chore, Reward, Consequence };

@@ -5,8 +5,8 @@ const typeDefs = `
       familyPasscode: String
       parentJoinCode: String
       childJoinCode: String
-      familyParent: [Parent]
-      familyChild: [Child]
+      parents: [Parent]
+      children: [Child]
       familyChore: [Chore]
       familyReward: [Reward]
       familyCons: [Consequence]
@@ -14,7 +14,7 @@ const typeDefs = `
     
     type Parent {
       _id: ID
-      parentUsername: String!
+      parentUsername: String
       parentEmail: String!
       parentPhone: String
       parentPassword: String!
@@ -61,15 +61,15 @@ const typeDefs = `
   input FamilyInput {
     familyName: String
     familyPasscode: String
-    familyParent: [ID]
-    familyChild: [ID]
+    parents: [ID]
+    children: [ID]
     familyChore: [ID]
     familyReward: [ID]
     familyCons: [ID]
     }
 
   input ParentInput{
-    parentUsername: String!
+    parentUsername: String
     parentEmail: String!
     parentPhone: String
     parentPassword: String!

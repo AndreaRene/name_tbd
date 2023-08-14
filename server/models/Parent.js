@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 const parentSchema = new Schema({
     parentUsername: {
         type: String,
-        require: true,
+        // require: true,
         unique: true,
         minlength: 2,
         maxlength: 20,
@@ -29,10 +29,10 @@ const parentSchema = new Schema({
         require: true,
         //TODO: required/disallowed characters
     },
-    parentfamily: {
-        type: Schema.Types.ObjectId,
-        ref: 'Family'
-    }
+    // parentfamily: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Family'
+    // }
 
 });
 

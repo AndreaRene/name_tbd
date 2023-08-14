@@ -19,11 +19,11 @@ const familySchema = new Schema({
     childJoinCode: {
         type: String
     },
-    familyParent: [{
+    parents: [{
         type: Schema.Types.ObjectId,
         ref: 'Parent'
     }],
-    familyChild: [{
+    children: [{
         type: Schema.Types.ObjectId,
         ref: 'Child'
     }],

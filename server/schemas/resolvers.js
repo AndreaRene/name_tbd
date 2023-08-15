@@ -32,17 +32,34 @@ const resolvers = {
     Query: {
         allFamilies: async () => Family.find(),
         oneFamily: async (_, { familyId }) => {
-            console.log('Log:', familyId);
-            return Family.findOne({ _id: familyId }).populate('parents').populate('children')
+            return Family.findOne({ _id: familyId })
+                .populate('parents')
+                .populate('children')
+                .populate('chores')
+                .populate('rewards')
+                .populate('consequences');
         },
         allParents: async () => Parent.find(),
         oneParent: async (_, { parentId }) => {
-            return Parent.findOne({_id: parentId})
+            return Parent.findOne({ _id: parentId });
         },
         allChildren: async () => Child.find(),
         oneChild: async (_, { childId }) => {
             return Child.findOne({ _id: childId })
+                .populate('chores')
+                .populate('rewards')
+                .populate('consequences');
         },
+        allChores: async () => Chore.find(),
+        oneChore: async (_, { choreId }) => {
+            return Chore.findOne({ choreId })
+                .populate('rewards')
+                .populate('consequences');
+        }
+
+
+
+
         // children: async (_, { familyId }) => {
         //     const params = familyId ? { _id: familyId } : {};
         //     return Child.find(params);

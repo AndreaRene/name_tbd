@@ -7,9 +7,9 @@ const typeDefs = `
       childJoinCode: String
       parents: [Parent]
       children: [Child]
-      familyChore: [Chore]
-      familyReward: [Reward]
-      familyCons: [Consequence]
+      chores: [Chore]
+      rewards: [Reward]
+      consequences: [Consequence]
     }
     
     type Parent {
@@ -24,10 +24,10 @@ const typeDefs = `
     type Child{
       _id: ID
       childUsername: String!
-      childFamily: Family
-      childChore: [Chore]
-      childReward: [Reward]
-      childCons: [Consequence]
+      familyId: Family
+      chores: [Chore]
+      rewards: [Reward]
+      consequences: [Consequence]
     }
 
     type Chore {
@@ -36,9 +36,9 @@ const typeDefs = `
     choreText: String
     choreDueDate: [String]
     choreCompletedDate: [String]
-    choreReward: [Reward]
+    rewards: [Reward]
     chorePoints: Int
-    choreCons: [Consequence]
+    consequences: [Consequence]
   }
 
   type Reward {
@@ -63,9 +63,9 @@ const typeDefs = `
     familyPasscode: String
     parents: [ID]
     children: [ID]
-    familyChore: [ID]
-    familyReward: [ID]
-    familyCons: [ID]
+    chores: [ID]
+    rewards: [ID]
+    consequences: [ID]
     }
 
   input ParentInput{
@@ -77,18 +77,18 @@ const typeDefs = `
 
   input ChildInput{
       childUsername: String!
-      childChore: [ID]
-      childReward: [ID]
-      childCons: [ID]
+      chores: [ID]
+      rewards: [ID]
+      consequences: [ID]
   }
 
   input ChoreInput {
     choreTitle: String!
     choreText: String
     choreDueDate: [String]
-    choreReward: [ID]
+    rewards: [ID]
     chorePoints: Int
-    choreCons: [ID]
+    consequences: [ID]
   }
 
   input RewardInput {
@@ -113,6 +113,7 @@ const typeDefs = `
     oneParent(parentId: ID!): Parent
     allChildren: [Child]
     oneChild(childId: ID!): Child
+    allChores: [Chore]
     oneChore(choreId: ID!): Chore
     oneReward(rewardId: ID!): Reward
     oneConsequence(consId: ID!): Consequence

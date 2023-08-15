@@ -25,6 +25,18 @@ const childSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Consequence'
     }],
+    familyId: {
+        type: String
+    },
+    choreId: [{
+        type: String
+    }],
+    rewardId: [{
+        type: String
+    }],
+    consequenceId: [{
+        type: String
+    }]
 });
 
 const Child = model('Child', childSchema);

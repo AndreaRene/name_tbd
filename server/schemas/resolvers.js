@@ -31,22 +31,18 @@ const resolvers = {
 
     Query: {
         allFamilies: async () => Family.find(),
-        family: async (_, { familyId }) => {
+        oneFamily: async (_, { familyId }) => {
             console.log('Log:', familyId);
-            return Family.findOne({_id: familyId}).populate('parents')
-        },
-        parents: async (_, { familyId }) => {
-            const params = familyId ? { _id: familyId } : {};
-            return Parent.find(params)
+            return Family.findOne({ _id: familyId }).populate('parents').populate('children')
         },
         allParents: async () => Parent.find(),
         oneParent: async (_, { parentId }) => {
             return Parent.findOne({_id: parentId})
         },
-        children: async (_, { familyId }) => {
-            const params = familyId ? { _id: familyId } : {};
-            return children.find(params);
-        },
+        // children: async (_, { familyId }) => {
+        //     const params = familyId ? { _id: familyId } : {};
+        //     return Child.find(params);
+        // },
     },
     // Query: {
     //     allFamilies: async () => queryObjects(Family, {}),

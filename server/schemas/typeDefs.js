@@ -108,18 +108,13 @@ const typeDefs = `
 
   type Query {
     allFamilies: [Family]
-    family(familyId: ID!): Family
+    oneFamily(familyId: ID!): Family
     allParents: [Parent]
-    parents(familyId: ID!): [Parent]
     oneParent(parentId: ID!): Parent
     allChildren: [Child]
-    children(familyId: ID!): [Child]
     oneChild(childId: ID!): Child
-    chores(familyId: ID!): [Chore]
     oneChore(choreId: ID!): Chore
-    rewards(familyId: ID!): [Reward]
     oneReward(rewardId: ID!): Reward
-    consequences(familyId: ID!): [Consequence]
     oneConsequence(consId: ID!): Consequence
   }
 

@@ -39,6 +39,10 @@ const resolvers = {
         oneParent: async (_, { parentId }) => {
             return Parent.findOne({_id: parentId})
         },
+        allChildren: async () => Child.find(),
+        oneChild: async (_, { childId }) => {
+            return Child.findOne({ _id: childId })
+        },
         // children: async (_, { familyId }) => {
         //     const params = familyId ? { _id: familyId } : {};
         //     return Child.find(params);

@@ -24,7 +24,7 @@ const typeDefs = `
     type Child{
       _id: ID
       childUsername: String!
-      familyId: Family
+      familyId: String
       chores: [Chore]
       rewards: [Reward]
       consequences: [Consequence]

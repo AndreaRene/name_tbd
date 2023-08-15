@@ -43,8 +43,10 @@ const resolvers = {
         oneParent: async (_, { parentId }) => {
             return Parent.findOne({_id: parentId})
         },
-
-         
+        children: async (_, { familyId }) => {
+            const params = familyId ? { _id: familyId } : {};
+            return children.find(params);
+        },
     },
     // Query: {
     //     allFamilies: async () => queryObjects(Family, {}),

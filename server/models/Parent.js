@@ -29,10 +29,9 @@ const parentSchema = new Schema({
         require: true,
         //TODO: required/disallowed characters
     },
-    // parentfamily: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Family'
-    // }
+    familyId: {
+        type: String
+    }
 
 });
 

@@ -18,6 +18,7 @@ const typeDefs = `
       parentEmail: String!
       parentPhone: String
       parentPassword: String!
+      familyId: String
     }
 
     type Child{

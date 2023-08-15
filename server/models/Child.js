@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const childrenchema = new Schema({
+const childSchema = new Schema({
     childUsername: {
         type: String,
         require: true,
@@ -9,10 +9,10 @@ const childrenchema = new Schema({
         trim: true,
         match: /[a-z]|[A-Z]/,
     },
-    childFamily: {
-        type: Schema.Types.ObjectId,
-        ref: 'Family'
-    },
+    // childFamily: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Family'
+    // },
     childChore: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
@@ -27,6 +27,6 @@ const childrenchema = new Schema({
     }],
 });
 
-const Child = model('Child', childrenchema);
+const Child = model('Child', childSchema);
 
 module.exports = Child;

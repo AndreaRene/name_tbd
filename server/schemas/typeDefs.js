@@ -81,6 +81,7 @@ const typeDefs = `
       chores: [ID]
       rewards: [ID]
       consequences: [ID]
+      familyId: String
   }
 
   input ChoreInput {

@@ -9,22 +9,21 @@ const childSchema = new Schema({
         trim: true,
         match: /[a-z]|[A-Z]/,
     },
-    childFamily: {
-        type: Schema.Types.ObjectId,
-        ref: 'Family'
+    familyId: {
+        type: String
     },
-    childChore: [{
+    chores: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }],
-    childReward: [{
+    rewards: [{
         type: Schema.Types.ObjectId,
         ref: 'Reward'
     }],
-    childCons: [{
+    consequences: [{
         type: Schema.Types.ObjectId,
         ref: 'Consequence'
-    }],
+    }]
 });
 
 const Child = model('Child', childSchema);

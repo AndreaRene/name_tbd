@@ -80,6 +80,10 @@ const resolvers = {
         allRewards: async () => Reward.find(),
         oneReward: async (_, { rewardId }) => {
             return Reward.findOne({ rewardId })
+        },
+        allConsequences: async () => Consequence.find(),
+        oneConsequence: async (_, { consId }) => {
+            return Consequence.findOne({ consId })
         }
 
 

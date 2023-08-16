@@ -1,3 +1,5 @@
+
+
 const {
     Family,
     Parent,
@@ -34,8 +36,21 @@ const resolvers = {
         oneFamily: async (_, { familyId }) => {
             return Family.findOne({ _id: familyId })
                 .populate('parents')
-                .populate('children')
-                .populate('chores')
+                .populate({
+                    path: 'children',
+                    populate: [
+                        { path: 'chores' },
+                        { path: 'rewards' },
+                        { path: 'consequences' }
+                    ]
+                })
+                .populate({
+                    path: 'chores',
+                    populate: [
+                        { path: 'rewards', },
+                        { path: 'consequences' }
+                    ]
+                })
                 .populate('rewards')
                 .populate('consequences');
         },
@@ -46,7 +61,13 @@ const resolvers = {
         allChildren: async () => Child.find(),
         oneChild: async (_, { childId }) => {
             return Child.findOne({ _id: childId })
-                .populate('chores')
+                .populate({
+                    path: 'chores',
+                    populate: [
+                        { path: 'rewards', },
+                        { path: 'consequences' }
+                    ]
+                })
                 .populate('rewards')
                 .populate('consequences');
         },

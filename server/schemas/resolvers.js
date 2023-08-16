@@ -76,6 +76,10 @@ const resolvers = {
             return Chore.findOne({ choreId })
                 .populate('rewards')
                 .populate('consequences');
+        },
+        allRewards: async () => Reward.find(),
+        oneReward: async (_, { rewardId }) => {
+            return Reward.findOne({ rewardId })
         }
 
 
@@ -108,14 +112,14 @@ const resolvers = {
     //     },
     // },
 
-    Mutation: {
-        createFamily: (_, { input }) => createObject(Family, input),
-        createParent: (_, { input }) => createObject(Parent, input),
-        createChild: (_, { input }) => createObject(Child, input),
-        createChore: (_, { input }) => createObject(Chore, input),
-        createReward: (_, { input }) => createObject(Reward, input),
-        createConsequence: (_, { input }) => createObject(Consequence, input),
-    },
+//     Mutation: {
+//         createFamily: (_, { input }) => createObject(Family, input),
+//         createParent: (_, { input }) => createObject(Parent, input),
+//         createChild: (_, { input }) => createObject(Child, input),
+//         createChore: (_, { input }) => createObject(Chore, input),
+//         createReward: (_, { input }) => createObject(Reward, input),
+//         createConsequence: (_, { input }) => createObject(Consequence, input),
+//     },
 };
 
 module.exports = resolvers;

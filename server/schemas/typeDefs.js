@@ -115,7 +115,9 @@ const typeDefs = `
     oneChild(childId: ID!): Child
     allChores: [Chore]
     oneChore(choreId: ID!): Chore
+    allRewards: [Reward]
     oneReward(rewardId: ID!): Reward
+    allConsequences: [Consequence]
     oneConsequence(consId: ID!): Consequence
   }
 

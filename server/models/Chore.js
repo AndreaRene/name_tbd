@@ -12,9 +12,9 @@ const choreSchema = new Schema({
     maxlength: 200,
     trim: true,
   },
-  choreDueDate: [{
+  choreDueDate: {
     type: Date,
-  }],
+  },
   choreCompletedDate: [{
     type: Date,
   }],

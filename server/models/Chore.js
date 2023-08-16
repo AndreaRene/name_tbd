@@ -13,10 +13,10 @@ const choreSchema = new Schema({
     trim: true,
   },
   choreDueDate: {
-    type: Date,
+    type: String,
   },
   choreCompletedDate: [{
-    type: Date,
+    type: String,
   }],
   rewards: [{
     type: Schema.Types.ObjectId,

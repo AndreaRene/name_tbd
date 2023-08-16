@@ -34,7 +34,7 @@ const typeDefs = `
     _id: ID
     choreTitle: String!
     choreText: String
-    choreDueDate: Date
+    choreDueDate: String
     choreCompletedDate: [String]
     rewards: [Reward]
     chorePoints: Int
@@ -73,6 +73,7 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
+    familyId: String
   }
 
   input ChildInput{
@@ -80,12 +81,13 @@ const typeDefs = `
       chores: [ID]
       rewards: [ID]
       consequences: [ID]
+      familyId: String
   }
 
   input ChoreInput {
     choreTitle: String!
     choreText: String
-    choreDueDate: Date
+    choreDueDate: String
     rewards: [ID]
     chorePoints: Int
     consequences: [ID]

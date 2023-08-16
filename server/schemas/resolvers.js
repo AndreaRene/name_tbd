@@ -22,6 +22,7 @@ const {
 const createObject = async (Model, input) => {
     try {
         const newObject = await Model.create(input);
+        console.log(newObject);
         return newObject;
     } catch (error) {
         console.error(`Error while adding ${Model.modelName.toLowerCase()}:`, error);

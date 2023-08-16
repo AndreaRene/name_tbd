@@ -73,6 +73,7 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
+    familyId: String
   }
 
   input ChildInput{

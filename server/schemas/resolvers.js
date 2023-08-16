@@ -19,15 +19,15 @@ const {
 //   }
 // };
 
-// const createObject = async (Model, input) => {
-//     try {
-//         const newObject = await Model.create(input);
-//         return newObject;
-//     } catch (error) {
-//         console.error(`Error while adding ${Model.modelName.toLowerCase()}:`, error);
-//         throw new Error(`Failed to add ${Model.modelName.toLowerCase()}.`);
-//     }
-// };
+const createObject = async (Model, input) => {
+    try {
+        const newObject = await Model.create(input);
+        return newObject;
+    } catch (error) {
+        console.error(`Error while adding ${Model.modelName.toLowerCase()}:`, error);
+        throw new Error(`Failed to add ${Model.modelName.toLowerCase()}.`);
+    }
+};
 
 const resolvers = {
 
@@ -116,14 +116,14 @@ const resolvers = {
     //     },
     // },
 
-//     Mutation: {
-//         createFamily: (_, { input }) => createObject(Family, input),
-//         createParent: (_, { input }) => createObject(Parent, input),
-//         createChild: (_, { input }) => createObject(Child, input),
-//         createChore: (_, { input }) => createObject(Chore, input),
-//         createReward: (_, { input }) => createObject(Reward, input),
-//         createConsequence: (_, { input }) => createObject(Consequence, input),
-//     },
+    Mutation: {
+        createFamily: (_, { input }) => createObject(Family, input),
+        createParent: (_, { input }) => createObject(Parent, input),
+        createChild: (_, { input }) => createObject(Child, input),
+        createChore: (_, { input }) => createObject(Chore, input),
+        createReward: (_, { input }) => createObject(Reward, input),
+        createConsequence: (_, { input }) => createObject(Consequence, input),
+    },
 };
 
 module.exports = resolvers;

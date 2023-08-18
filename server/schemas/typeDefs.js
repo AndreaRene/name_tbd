@@ -62,10 +62,6 @@ const typeDefs = `
     familyName: String
     familyPasscode: String
     parents: [ID]
-    children: [ID]
-    chores: [ID]
-    rewards: [ID]
-    consequences: [ID]
     }
 
   input ParentInput{
@@ -78,9 +74,6 @@ const typeDefs = `
 
   input ChildInput{
       childUsername: String!
-      chores: [ID]
-      rewards: [ID]
-      consequences: [ID]
       familyId: String
   }
 
@@ -102,6 +95,56 @@ const typeDefs = `
   }
 
   input ConsequenceInput {
+    consTitle: String!
+    consText: String
+    consCount: Int
+    consCost: Int
+  }
+  
+  input UpdateFamilyInput {
+    familyName: String
+    familyPasscode: String
+    parentJoinCode: String
+    childJoinCode: String
+    parents: [Parent]
+    children: [Child]
+    chores: [Chore]
+    rewards: [Reward]
+    consequences: [Consequence]
+    }
+
+  input UpdateParentInput {
+    parentUsername: String
+    parentEmail: String!
+    parentPhone: String
+    parentPassword: String!
+    familyId: String
+  }
+
+  input UpdateChildInput {
+    chores: [ChoreInput]
+    rewards: [RewardInput]
+    consequences: [ConsequenceInput]
+  }
+
+  input UpdateChoreInput {
+    choreTitle: String!
+    choreText: String
+    choreDueDate: String
+    rewards: [RewrdInput]
+    chorePoints: Int
+    consequences: [ConsequenceInput]
+  }
+
+  input UpdateRewardInput {
+    rewardTitle: String!
+    rewardText: String
+    rewardCost: Int
+    rewardCount: Int
+    rewardMaxCount: Int
+  }
+
+  input UpdateConsequenceInput {
     consTitle: String!
     consText: String
     consCount: Int
@@ -130,6 +173,12 @@ const typeDefs = `
     createChore(input: ChoreInput): Chore
     createReward(input: RewardInput): Reward
     createConsequence(input: ConsequenceInput): Consequence
+    updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
+    updateParent(parentId: ID!, input: UpdateParentInput): Parent
+    updateChild(childId: ID!, input: UpdateChildInput): Child
+    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
+    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
+    updateConsequence(consId: ID!, input UpdateConsequenceInput): Consequence
   }
 `;
 

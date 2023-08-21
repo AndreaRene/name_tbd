@@ -121,6 +121,7 @@ const typeDefs = `
   }
 
   input UpdateChildInput {
+    childUsername: String!
     chores: [ChoreInput]
     rewards: [RewardInput]
     consequences: [ConsequenceInput]
@@ -174,6 +175,7 @@ const typeDefs = `
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
+    updateChild(childId: ID!, input: UpdateChildInput): Child
   }
 `;
 

@@ -122,6 +122,7 @@ const resolvers = {
         createConsequence: (_, { input }) => createObject(Consequence, input),
         updateFamily: (_, { familyId, input }) => updateObject(Family, familyId, input),
         updateParent: (_, { parentId, input }) => updateObject(Parent, parentId, input),
+        updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
     },
 };
 

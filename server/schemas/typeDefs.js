@@ -106,11 +106,11 @@ const typeDefs = `
     familyPasscode: String
     parentJoinCode: String
     childJoinCode: String
-    parents: [Parent]
-    children: [Child]
-    chores: [Chore]
-    rewards: [Reward]
-    consequences: [Consequence]
+    parents: [ParentInput]
+    children: [ChildInput]
+    chores: [ChoreInput]
+    rewards: [RewardInput]
+    consequences: [ConsequenceInput]
     }
 
   input UpdateParentInput {
@@ -131,7 +131,7 @@ const typeDefs = `
     choreTitle: String!
     choreText: String
     choreDueDate: String
-    rewards: [RewrdInput]
+    rewards: [RewardInput]
     chorePoints: Int
     consequences: [ConsequenceInput]
   }
@@ -174,11 +174,7 @@ const typeDefs = `
     createReward(input: RewardInput): Reward
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
-    updateParent(parentId: ID!, input: UpdateParentInput): Parent
-    updateChild(childId: ID!, input: UpdateChildInput): Child
-    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
-    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
-    updateConsequence(consId: ID!, input UpdateConsequenceInput): Consequence
+    updateParent(parentId: ID!, input: 
   }
 `;
 

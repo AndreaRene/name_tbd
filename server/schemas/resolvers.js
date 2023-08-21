@@ -8,15 +8,53 @@ const {
 } = require('../models');
 
 const createObject = async (Model, input) => {
+    
     try {
         const newObject = await Model.create(input);
         console.log(newObject);
+            try {
+                updateFamilyWithObject(newObject.familyId, newObject._id);
+            } catch (updateError) {
+                console.error(`Error while updating family with ${Model.modelName}:`, updateError);
+                throw new Error(`Failed to update family with ${Model.modelName}.`);
+        }
         return newObject;
     } catch (error) {
         console.error(`Error while adding ${Model.modelName.toLowerCase()}:`, error);
         throw new Error(`Failed to add ${Model.modelName.toLowerCase()}.`);
     }
 };
+
+const updateObject = async (Model, objectId, updateInput) => {
+    try {
+        const updatedObject = await Model.findOneAndUpdate(
+            { _id: objectId }, 
+            { $set: updateInput }, 
+            { new: true } 
+        );
+
+        return updatedObject;
+    } catch {
+        console.error('Error updating object:', error);
+        throw new Error('Failed to update object.');
+     }
+}
+
+// const updateObjectWithId = async (Model, objectIdToUpdate, fieldToUpdate, valueToAdd) => {
+//     try {
+//         const updateQuery = { $addToSet: { [fieldToUpdate]: valueToAdd } };
+//         const updatedObject = await Model.findOneAndUpdate(
+//             { _id: objectIdToUpdate },
+//             updateQuery,
+//             { new: true }
+//         );
+
+//         return updatedObject;
+//     } catch (error) {
+//         console.error('Error updating object:', error);
+//         throw new Error('Failed to update object.');
+//     }
+// };
 
 const resolvers = {
 
@@ -82,6 +120,8 @@ const resolvers = {
         createChore: (_, { input }) => createObject(Chore, input),
         createReward: (_, { input }) => createObject(Reward, input),
         createConsequence: (_, { input }) => createObject(Consequence, input),
+        updateFamily: (_, { familyId, input }) => updateObject(Family, familyId, input),
+\
     },
 };
 

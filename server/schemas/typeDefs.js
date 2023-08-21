@@ -177,7 +177,8 @@ const typeDefs = `
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
     updateChild(childId: ID!, input: UpdateChildInput): Child,
     updateChore(choreId: ID!, input: UpdateChoreInput): Chore,
-    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
+    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward,
+    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
   }
 `;
 

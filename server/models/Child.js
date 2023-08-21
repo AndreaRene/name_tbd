@@ -9,18 +9,19 @@ const childSchema = new Schema({
         trim: true,
         match: /[a-z]|[A-Z]/,
     },
-    familyId: {
-        type: String
+    family: {
+        type: Schema.Types.ObjectId,
+        ref: 'Family'
     },
-    chores: [{
+    chore: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }],
-    rewards: [{
+    reward: [{
         type: Schema.Types.ObjectId,
         ref: 'Reward'
     }],
-    consequences: [{
+    consequence: [{
         type: Schema.Types.ObjectId,
         ref: 'Consequence'
     }]

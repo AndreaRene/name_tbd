@@ -26,7 +26,19 @@ const rewardSchema = new Schema({
         type: Number,
         maxlength: 2,
         match: /[0-9]/
-    }
+    },
+    family: {
+        type: Schema.Types.ObjectId,
+        ref: 'Family'
+    },
+    child: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Child'
+    }],
+    chore: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Chore'
+    }]
 });
 
 const Reward = model('Reward', rewardSchema);

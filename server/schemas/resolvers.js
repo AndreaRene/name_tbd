@@ -123,6 +123,7 @@ const resolvers = {
         updateFamily: (_, { familyId, input }) => updateObject(Family, familyId, input),
         updateParent: (_, { parentId, input }) => updateObject(Parent, parentId, input),
         updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
+        updateChore: (_, { choreId, input }) => updateObject(Chore, choreId, input),
     },
 };
 

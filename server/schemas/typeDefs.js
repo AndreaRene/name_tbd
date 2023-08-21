@@ -175,7 +175,8 @@ const typeDefs = `
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
-    updateChild(childId: ID!, input: UpdateChildInput): Child
+    updateChild(childId: ID!, input: UpdateChildInput): Child,
+    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
   }
 `;
 

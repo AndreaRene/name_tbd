@@ -124,6 +124,7 @@ const resolvers = {
         updateParent: (_, { parentId, input }) => updateObject(Parent, parentId, input),
         updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
         updateChore: (_, { choreId, input }) => updateObject(Chore, choreId, input),
+        updateReward: (_,{ rewardId, input }) => updateObject(Reward, rewardId, input)
     },
 };
 

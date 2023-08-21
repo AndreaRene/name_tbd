@@ -121,7 +121,7 @@ const resolvers = {
         createReward: (_, { input }) => createObject(Reward, input),
         createConsequence: (_, { input }) => createObject(Consequence, input),
         updateFamily: (_, { familyId, input }) => updateObject(Family, familyId, input),
-\
+        updateParent: (_, { parentId, input }) => updateObject(Parent, parentId, input),
     },
 };
 

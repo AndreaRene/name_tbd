@@ -115,7 +115,6 @@ const typeDefs = `
 
   input UpdateParentInput {
     parentUsername: String
-    parentEmail: String!
     parentPhone: String
     parentPassword: String!
     familyId: String
@@ -174,7 +173,7 @@ const typeDefs = `
     createReward(input: RewardInput): Reward
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
-    updateParent(parentId: ID!, input: 
+    updateParent(parentId: ID!, input: UpdateParentInput): Parent
   }
 `;
 

@@ -148,6 +148,9 @@ const resolvers = {
         updateParentRelationships: (_, { parentId, input }) => {
             return updateObjectRelationships(parentId, input, Parent.findOneAndUpdate.bind(Parent))
         },
+        updateChildRelationships: (_, { childId, input }) => {
+            return updateObjectRelationships(childId, input, Child.findOneAndUpdate.bind(Child))
+        }
     },
 };
 

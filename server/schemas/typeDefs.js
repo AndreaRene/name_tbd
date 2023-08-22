@@ -204,12 +204,13 @@ const typeDefs = `
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
-    updateChild(childId: ID!, input: UpdateChildInput): Child,
-    updateChore(choreId: ID!, input: UpdateChoreInput): Chore,
-    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward,
-    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence,
+    updateChild(childId: ID!, input: UpdateChildInput): Child
+    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
+    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
+    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
     updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
     updateParentRelationships(parentId: ID!, input: UpdateParentRelationshipsInput): Parent
+    updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
   }
   
 `;

@@ -19,23 +19,23 @@ const familySchema = new Schema({
     childJoinCode: {
         type: String
     },
-    parent: [{
+    parents: [{
         type: Schema.Types.ObjectId,
         ref: 'Parent'
     }],
-    child: [{
+    children: [{
         type: Schema.Types.ObjectId,
         ref: 'Child'
     }],
-    chore: [{
+    chores: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }],
-    reward: [{
+    rewards: [{
         type: Schema.Types.ObjectId,
         ref: 'Reward'
     }],
-    consequence: [{
+    consequences: [{
         type: Schema.Types.ObjectId,
         ref: 'Consequence'
     }],

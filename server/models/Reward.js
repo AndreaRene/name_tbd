@@ -31,11 +31,11 @@ const rewardSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Family'
     },
-    child: [{
+    children: [{
         type: Schema.Types.ObjectId,
         ref: 'Child'
     }],
-    chore: [{
+    chores: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }]

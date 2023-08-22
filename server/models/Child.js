@@ -13,15 +13,15 @@ const childSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Family'
     },
-    chore: [{
+    chores: [{
         type: Schema.Types.ObjectId,
         ref: 'Chore'
     }],
-    reward: [{
+    rewards: [{
         type: Schema.Types.ObjectId,
         ref: 'Reward'
     }],
-    consequence: [{
+    consequences: [{
         type: Schema.Types.ObjectId,
         ref: 'Consequence'
     }]

@@ -25,15 +25,15 @@ const choreSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Family'
   },
-  child: [{
+  children: [{
     type: Schema.Types.ObjectId,
     ref: 'Child'
   }],
-  reward: [{
+  rewards: [{
     type: Schema.Types.ObjectId,
     ref: 'Reward'
   }],
-  consequence: [{
+  consequences: [{
     type: Schema.Types.ObjectId,
     ref: 'Consequence'
   }]

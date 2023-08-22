@@ -150,7 +150,10 @@ const resolvers = {
         },
         updateChildRelationships: (_, { childId, input }) => {
             return updateObjectRelationships(childId, input, Child.findOneAndUpdate.bind(Child))
-        }
+        },
+        updateChoreRelationships: (_, { choreId, input }) => {
+            return updateObjectRelationships(choreId, input, Chore.findOneAndUpdate.bind(Chore))
+        },
     },
 };
 

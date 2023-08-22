@@ -40,6 +40,20 @@ const updateObject = async (Model, objectId, updateInput) => {
      }
 }
 
+
+const updateObjectRelationships = async (objectId, input, updateFunction) => {
+    try {
+        const updatedObject = await updateFunction(
+            { _id: objectId },
+            { $set: input },
+            { new: true }
+        );
+        return updatedObject;
+    } catch (error) {
+        console.error('Error updating object relationships:', error);
+        throw new Error('Failed to update object relationships.');
+    };
+};
 // const updateObjectWithId = async (Model, objectIdToUpdate, fieldToUpdate, valueToAdd) => {
 //     try {
 //         const updateQuery = { $addToSet: { [fieldToUpdate]: valueToAdd } };
@@ -125,7 +139,10 @@ const resolvers = {
         updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
         updateChore: (_, { choreId, input }) => updateObject(Chore, choreId, input),
         updateReward: (_, { rewardId, input }) => updateObject(Reward, rewardId, input),
-        updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input)
+        updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input),
+        updateFamilyRelationships: (_, { familyId, input }) => {
+            return updateObjectRelationships(familyId, input, Family.findOneAndUpdate.bind(Family))
+        },
     },
 };
 

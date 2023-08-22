@@ -18,13 +18,21 @@ const choreSchema = new Schema({
   choreCompletedDate: [{
     type: String,
   }],
+  chorePoints: {
+    type: Number,
+  },
+  family: {
+    type: Schema.Types.ObjectId,
+    ref: 'Family'
+  },
+  children: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Child'
+  }],
   rewards: [{
     type: Schema.Types.ObjectId,
     ref: 'Reward'
   }],
-  chorePoints: {
-    type: Number,
-  },
   consequences: [{
     type: Schema.Types.ObjectId,
     ref: 'Consequence'

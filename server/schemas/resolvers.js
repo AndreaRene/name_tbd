@@ -40,21 +40,20 @@ const updateObject = async (Model, objectId, updateInput) => {
      }
 }
 
-// const updateObjectWithId = async (Model, objectIdToUpdate, fieldToUpdate, valueToAdd) => {
-//     try {
-//         const updateQuery = { $addToSet: { [fieldToUpdate]: valueToAdd } };
-//         const updatedObject = await Model.findOneAndUpdate(
-//             { _id: objectIdToUpdate },
-//             updateQuery,
-//             { new: true }
-//         );
 
-//         return updatedObject;
-//     } catch (error) {
-//         console.error('Error updating object:', error);
-//         throw new Error('Failed to update object.');
-//     }
-// };
+const updateObjectRelationships = async (objectId, input, updateFunction) => {
+    try {
+        const updatedObject = await updateFunction(
+            { _id: objectId },
+            { $addToSet: input },
+            { new: true }
+        );
+        return updatedObject;
+    } catch (error) {
+        console.error('Error updating object relationships:', error);
+        throw new Error('Failed to update object relationships.');
+    };
+};
 
 const resolvers = {
 
@@ -83,7 +82,8 @@ const resolvers = {
         },
         allParents: async () => Parent.find(),
         oneParent: async (_, { parentId }) => {
-            return Parent.findOne({ _id: parentId });
+            return Parent.findOne({ _id: parentId })
+                .populate('family');
         },
         allChildren: async () => Child.find(),
         oneChild: async (_, { childId }) => {
@@ -96,7 +96,8 @@ const resolvers = {
                     ]
                 })
                 .populate('rewards')
-                .populate('consequences');
+                .populate('consequences')
+                .populate('family');
         },
         allChores: async () => Chore.find(),
         oneChore: async (_, { choreId }) => {
@@ -125,7 +126,22 @@ const resolvers = {
         updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
         updateChore: (_, { choreId, input }) => updateObject(Chore, choreId, input),
         updateReward: (_, { rewardId, input }) => updateObject(Reward, rewardId, input),
-        updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input)
+        updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input),
+        updateFamilyRelationships: (_, { familyId, input }) => {
+            return updateObjectRelationships(familyId, input, Family.findOneAndUpdate.bind(Family))
+        },
+        updateChildRelationships: (_, { childId, input }) => {
+            return updateObjectRelationships(childId, input, Child.findOneAndUpdate.bind(Child))
+        },
+        updateChoreRelationships: (_, { choreId, input }) => {
+            return updateObjectRelationships(choreId, input, Chore.findOneAndUpdate.bind(Chore))
+        },
+        updateRewardRelationships: (_, { rewardId, input }) => {
+            return updateObjectRelationships(rewardId, input, Reward.findOneAndUpdate.bind(Reward))
+        },
+        updateConsequenceRelationships: (_, { consId, input }) => {
+            return updateObjectRelationships(consId, input, Consequence.findOneAndUpdate.bind(Consequence))
+        }
     },
 };
 

@@ -18,13 +18,13 @@ const typeDefs = `
       parentEmail: String!
       parentPhone: String
       parentPassword: String!
-      familyId: String
+      family: Family
     }
 
     type Child{
       _id: ID
       childUsername: String!
-      familyId: String
+      family: Family
       chores: [Chore]
       rewards: [Reward]
       consequences: [Consequence]
@@ -36,8 +36,10 @@ const typeDefs = `
     choreText: String
     choreDueDate: String
     choreCompletedDate: [String]
-    rewards: [Reward]
     chorePoints: Int
+    family: Family
+    children: [Child]
+    rewards: [Reward]
     consequences: [Consequence]
   }
 
@@ -48,6 +50,9 @@ const typeDefs = `
     rewardCost: Int
     rewardCount: Int
     rewardMaxCount: Int
+    family: Family
+    children: [Child]
+    chores: [Chore]
   }
 
   type Consequence {
@@ -56,12 +61,14 @@ const typeDefs = `
     consText: String
     consCount: Int
     consCost: Int
+    family: Family
+    children: [Child]
+    chores: [Chore]
   }
 
   input FamilyInput {
     familyName: String
     familyPasscode: String
-    parents: [ID]
     }
 
   input ParentInput{
@@ -69,21 +76,17 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
-    familyId: String
   }
 
   input ChildInput{
       childUsername: String!
-      familyId: String
   }
 
   input ChoreInput {
     choreTitle: String!
     choreText: String
     choreDueDate: String
-    rewards: [ID]
     chorePoints: Int
-    consequences: [ID]
   }
 
   input RewardInput {
@@ -106,37 +109,51 @@ const typeDefs = `
     familyPasscode: String
     parentJoinCode: String
     childJoinCode: String
-    parents: [ParentInput]
-    children: [ChildInput]
-    chores: [ChoreInput]
-    rewards: [RewardInput]
-    consequences: [ConsequenceInput]
     }
 
+  input UpdateFamilyRelationshipsInput {
+    parents: [ID]
+    children: [ID]
+    chores: [ID]
+    rewards: [ID]
+    consequences: [ID]
+  }
+
   input UpdateParentInput {
+    family: ID
     parentUsername: String
     parentPhone: String
     parentPassword: String!
-    familyId: String
   }
 
+  
+
   input UpdateChildInput {
+    family: ID
     childUsername: String!
-    chores: [ChoreInput]
-    rewards: [RewardInput]
-    consequences: [ConsequenceInput]
+  }
+
+  input UpdateChildRelationshipsInput {
+    chores: [ID]
+    rewards: [ID]
+    consequences: [ID]
   }
 
   input UpdateChoreInput {
+    family: ID
     choreTitle: String!
     choreText: String
     choreDueDate: String
-    rewards: [RewardInput]
-    chorePoints: Int
-    consequences: [ConsequenceInput]
+  }
+
+  input UpdateChoreRelationshipsInput {
+    children: [ID]
+    rewards: [ID]
+    consequences: [ID]
   }
 
   input UpdateRewardInput {
+    family: ID
     rewardTitle: String!
     rewardText: String
     rewardCost: Int
@@ -144,11 +161,22 @@ const typeDefs = `
     rewardMaxCount: Int
   }
 
+  input UpdateRewardRelationshipsInput {
+    children: [ID]
+    chores: [ID]
+  }
+
   input UpdateConsequenceInput {
+    family: ID
     consTitle: String!
     consText: String
     consCount: Int
     consCost: Int
+  }
+
+  input UpdateConsequenceRelationshipsInput {
+    children: [ID]
+    chores: [ID]
   }
 
   type Query {
@@ -175,11 +203,17 @@ const typeDefs = `
     createConsequence(input: ConsequenceInput): Consequence
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
-    updateChild(childId: ID!, input: UpdateChildInput): Child,
-    updateChore(choreId: ID!, input: UpdateChoreInput): Chore,
-    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward,
+    updateChild(childId: ID!, input: UpdateChildInput): Child
+    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
+    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
     updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
+    updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
+    updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
+    updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
+    updateRewardRelationships(rewardId: ID!, input: UpdateRewardRelationshipsInput): Reward
+    updateConsequenceRelationships(consId: ID!, input: UpdateConsequenceRelationshipsInput): Consequence
   }
+  
 `;
 
 

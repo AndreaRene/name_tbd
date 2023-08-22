@@ -45,7 +45,7 @@ const updateObjectRelationships = async (objectId, input, updateFunction) => {
     try {
         const updatedObject = await updateFunction(
             { _id: objectId },
-            { $set: input },
+            { $addToSet: input },
             { new: true }
         );
         return updatedObject;

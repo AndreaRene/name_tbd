@@ -97,7 +97,8 @@ const resolvers = {
         },
         allParents: async () => Parent.find(),
         oneParent: async (_, { parentId }) => {
-            return Parent.findOne({ _id: parentId });
+            return Parent.findOne({ _id: parentId })
+                .populate('family');
         },
         allChildren: async () => Child.find(),
         oneChild: async (_, { childId }) => {
@@ -110,7 +111,8 @@ const resolvers = {
                     ]
                 })
                 .populate('rewards')
-                .populate('consequences');
+                .populate('consequences')
+                .populate('family');
         },
         allChores: async () => Chore.find(),
         oneChore: async (_, { choreId }) => {
@@ -142,6 +144,9 @@ const resolvers = {
         updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input),
         updateFamilyRelationships: (_, { familyId, input }) => {
             return updateObjectRelationships(familyId, input, Family.findOneAndUpdate.bind(Family))
+        },
+        updateParentRelationships: (_, { parentId, input }) => {
+            return updateObjectRelationships(parentId, input, Parent.findOneAndUpdate.bind(Parent))
         },
     },
 };

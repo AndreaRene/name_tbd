@@ -209,7 +209,9 @@ const typeDefs = `
     updateReward(rewardId: ID!, input: UpdateRewardInput): Reward,
     updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence,
     updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
+    updateParentRelationships(parentId: ID!, input: UpdateParentRelationshipsInput): Parent
   }
+  
 `;
 
 

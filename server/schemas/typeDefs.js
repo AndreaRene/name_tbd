@@ -212,6 +212,7 @@ const typeDefs = `
     updateParentRelationships(parentId: ID!, input: UpdateParentRelationshipsInput): Parent
     updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
     updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
+    updateRewardRelationships(rewardId: ID!, input: UpdateRewardRelationshipsInput): Reward
   }
   
 `;

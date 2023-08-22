@@ -154,6 +154,9 @@ const resolvers = {
         updateChoreRelationships: (_, { choreId, input }) => {
             return updateObjectRelationships(choreId, input, Chore.findOneAndUpdate.bind(Chore))
         },
+        updateRewardRelationships: (_, { rewardId, input }) => {
+            return updateObjectRelationships(rewardId, input, Reward.findOneAndUpdate.bind(Reward))
+        }
     },
 };
 

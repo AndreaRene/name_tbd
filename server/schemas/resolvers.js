@@ -41,7 +41,7 @@ const updateObject = async (Model, objectId, updateInput) => {
 }
 
 
-const updateObjectRelationships = async (objectId, input, updateFunction) => {
+const updateObjectArrays = async (objectId, input, updateFunction) => {
     try {
         const updatedObject = await updateFunction(
             { _id: objectId },
@@ -128,19 +128,19 @@ const resolvers = {
         updateReward: (_, { rewardId, input }) => updateObject(Reward, rewardId, input),
         updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input),
         updateFamilyRelationships: (_, { familyId, input }) => {
-            return updateObjectRelationships(familyId, input, Family.findOneAndUpdate.bind(Family))
+            return updateObjectArrays(familyId, input, Family.findOneAndUpdate.bind(Family))
         },
         updateChildRelationships: (_, { childId, input }) => {
-            return updateObjectRelationships(childId, input, Child.findOneAndUpdate.bind(Child))
+            return updateObjectArrays(childId, input, Child.findOneAndUpdate.bind(Child))
         },
         updateChoreRelationships: (_, { choreId, input }) => {
-            return updateObjectRelationships(choreId, input, Chore.findOneAndUpdate.bind(Chore))
+            return updateObjectArrays(choreId, input, Chore.findOneAndUpdate.bind(Chore))
         },
         updateRewardRelationships: (_, { rewardId, input }) => {
-            return updateObjectRelationships(rewardId, input, Reward.findOneAndUpdate.bind(Reward))
+            return updateObjectArrays(rewardId, input, Reward.findOneAndUpdate.bind(Reward))
         },
         updateConsequenceRelationships: (_, { consId, input }) => {
-            return updateObjectRelationships(consId, input, Consequence.findOneAndUpdate.bind(Consequence))
+            return updateObjectArrays(consId, input, Consequence.findOneAndUpdate.bind(Consequence))
         }
     },
 };

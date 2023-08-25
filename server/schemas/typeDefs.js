@@ -84,10 +84,12 @@ const typeDefs = `
     parentEmail: String!
     parentPhone: String
     parentPassword: String!
+    family: ID
   }
 
 input ChildInput {
   childUsername: String!
+  family: ID
 }
 
 input ChoreInput {
@@ -98,6 +100,7 @@ input ChoreInput {
   recurringStartDate: String
   recurringEndDate: String
   childAssociations: [ChildChoreAssociationInput]
+  family: ID
 }
 
 input ChildChoreAssociationInput {
@@ -105,7 +108,6 @@ input ChildChoreAssociationInput {
   reward: ID
   consequence: ID
   choreDueDate: String
-  choreCompletedDate: [String]
   chorePoints: Int
 }
 
@@ -115,6 +117,7 @@ input ChildChoreAssociationInput {
     rewardCost: Int
     rewardCount: Int
     rewardMaxCount: Int
+    family: ID
   }
 
   input ConsequenceInput {
@@ -122,6 +125,7 @@ input ChildChoreAssociationInput {
     consText: String
     consCount: Int
     consCost: Int
+    family: ID
   }
   
   input UpdateFamilyInput {
@@ -140,19 +144,16 @@ input ChildChoreAssociationInput {
   }
 
   input UpdateParentInput {
-    family: ID
     parentUsername: String
     parentPhone: String
     parentPassword: String!
   }
 
   input UpdateChildInput {
-  family: ID
   childUsername: String!
 }
 
 input UpdateChoreInput {
-  family: ID
   choreTitle: String!
   choreText: String
   recurring: Boolean
@@ -170,77 +171,79 @@ input UpdateChildChoreAssociationInput {
   reward: ID
   consequence: ID
   choreDueDate: String
-  choreCompletedDate: [String]
   chorePoints: Int
 }
 
-  input UpdateChoreRelationshipsInput {
-    children: [ID]
-    rewards: [ID]
-    consequences: [ID]
-  }
+input UpdateChoreCompletedDateInput{
+  choreCompletedDate: [String]
+}
 
-  input UpdateRewardInput {
-    family: ID
-    rewardTitle: String!
-    rewardText: String
-    rewardCost: Int
-    rewardCount: Int
-    rewardMaxCount: Int
-  }
+input UpdateChoreRelationshipsInput {
+  children: [UpdateChildChoreAssociationInput]
+  rewards: [ID]
+  consequences: [ID]
+}
 
-  input UpdateRewardRelationshipsInput {
-    children: [ID]
-    chores: [ID]
-  }
+input UpdateRewardInput {
+  family: ID
+  rewardTitle: String!
+  rewardText: String
+  rewardCost: Int
+  rewardCount: Int
+  rewardMaxCount: Int
+}
 
-  input UpdateConsequenceInput {
-    family: ID
-    consTitle: String!
-    consText: String
-    consCount: Int
-    consCost: Int
-  }
+input UpdateRewardRelationshipsInput {
+  children: [ID]
+  chores: [ID]
+}
 
-  input UpdateConsequenceRelationshipsInput {
-    children: [ID]
-    chores: [ID]
-  }
+input UpdateConsequenceInput {
+  consTitle: String!
+  consText: String
+  consCount: Int
+  consCost: Int
+}
 
-  type Query {
-    allFamilies: [Family]
-    oneFamily(familyId: ID!): Family
-    allParents: [Parent]
-    oneParent(parentId: ID!): Parent
-    allChildren: [Child]
-    oneChild(childId: ID!): Child
-    allChores: [Chore]
-    oneChore(choreId: ID!): Chore
-    allRewards: [Reward]
-    oneReward(rewardId: ID!): Reward
-    allConsequences: [Consequence]
-    oneConsequence(consId: ID!): Consequence
-  }
+input UpdateConsequenceRelationshipsInput {
+  children: [ID]
+  chores: [ID]
+}
 
-  type Mutation {
-    createFamily(input: FamilyInput!): Family
-    createParent(input: ParentInput!): Parent
-    createChild(input: ChildInput): Child
-    createChore(input: ChoreInput): Chore
-    createReward(input: RewardInput): Reward
-    createConsequence(input: ConsequenceInput): Consequence
-    updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
-    updateParent(parentId: ID!, input: UpdateParentInput): Parent
-    updateChild(childId: ID!, input: UpdateChildInput): Child
-    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
-    updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
-    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
-    updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
-    updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
-    updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
-    updateRewardRelationships(rewardId: ID!, input: UpdateRewardRelationshipsInput): Reward
-    updateConsequenceRelationships(consId: ID!, input: UpdateConsequenceRelationshipsInput): Consequence
-  }
+type Query {
+  allFamilies: [Family]
+  oneFamily(familyId: ID!): Family
+  allParents: [Parent]
+  oneParent(parentId: ID!): Parent
+  allChildren: [Child]
+  oneChild(childId: ID!): Child
+  allChores: [Chore]
+  oneChore(choreId: ID!): Chore
+  allRewards: [Reward]
+  oneReward(rewardId: ID!): Reward
+  allConsequences: [Consequence]
+  oneConsequence(consId: ID!): Consequence
+}
+
+type Mutation {
+  createFamily(input: FamilyInput!): Family
+  createParent(input: ParentInput!): Parent
+  createChild(input: ChildInput): Child
+  createChore(input: ChoreInput): Chore
+  createReward(input: RewardInput): Reward
+  createConsequence(input: ConsequenceInput): Consequence
+  updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
+  updateParent(parentId: ID!, input: UpdateParentInput): Parent
+  updateChild(childId: ID!, input: UpdateChildInput): Child
+  updateChore(choreId: ID!, input: UpdateChoreInput): Chore
+  updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
+  updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
+  updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
+  updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
+  updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
+  updateRewardRelationships(rewardId: ID!, input: UpdateRewardRelationshipsInput): Reward
+  updateConsequenceRelationships(consId: ID!, input: UpdateConsequenceRelationshipsInput): Consequence
+}
   
 `;
 

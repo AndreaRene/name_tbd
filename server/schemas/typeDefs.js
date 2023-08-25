@@ -30,17 +30,25 @@ const typeDefs = `
       consequences: [Consequence]
     }
 
-    type Chore {
+  type Chore {
     _id: ID
+    family: Family
     choreTitle: String!
     choreText: String
+    recurring: Boolean
+    recurringFrequency: String
+    recurringStartDate: String
+    recurringEndDate: String
+    children: [ChildChoreAssociation]
+  }
+
+  Type ChildChoreAssociation {
+    child: Child
+    reward: Reward
+    consequence: Consequence
     choreDueDate: String
     choreCompletedDate: [String]
     chorePoints: Int
-    family: Family
-    children: [Child]
-    rewards: [Reward]
-    consequences: [Consequence]
   }
 
   type Reward {
@@ -78,16 +86,28 @@ const typeDefs = `
     parentPassword: String!
   }
 
-  input ChildInput{
-      childUsername: String!
-  }
+input ChildInput {
+  childUsername: String!
+}
 
-  input ChoreInput {
-    choreTitle: String!
-    choreText: String
-    choreDueDate: String
-    chorePoints: Int
-  }
+input ChoreInput {
+  choreTitle: String!
+  choreText: String
+  recurring: Boolean
+  recurringFrequency: String
+  recurringStartDate: String
+  recurringEndDate: String
+  childAssociations: [ChildChoreAssociationInput]
+}
+
+input ChildChoreAssociationInput {
+  child: ID
+  reward: ID
+  consequence: ID
+  choreDueDate: String
+  choreCompletedDate: [String]
+  chorePoints: Int
+}
 
   input RewardInput {
     rewardTitle: String!
@@ -126,25 +146,33 @@ const typeDefs = `
     parentPassword: String!
   }
 
-  
-
   input UpdateChildInput {
-    family: ID
-    childUsername: String!
-  }
+  family: ID
+  childUsername: String!
+}
 
-  input UpdateChildRelationshipsInput {
-    chores: [ID]
-    rewards: [ID]
-    consequences: [ID]
-  }
+input UpdateChoreInput {
+  family: ID
+  choreTitle: String!
+  choreText: String
+  recurring: Boolean
+  recurringFrequency: String
+  recurringStartDate: String
+  recurringEndDate: String
+}
 
-  input UpdateChoreInput {
-    family: ID
-    choreTitle: String!
-    choreText: String
-    choreDueDate: String
-  }
+input UpdateChoreRelationshipsInput {
+  children: [UpdateChildChoreAssociationInput]
+}
+
+input UpdateChildChoreAssociationInput {
+  child: ID
+  reward: ID
+  consequence: ID
+  choreDueDate: String
+  choreCompletedDate: [String]
+  chorePoints: Int
+}
 
   input UpdateChoreRelationshipsInput {
     children: [ID]

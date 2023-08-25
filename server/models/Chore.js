@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const choreSchema = new Schema({
+  family: {
+    type: Schema.Types.ObjectId,
+    ref: 'Family'
+  },
   choreTitle: {
     type: String,
     required: true,
@@ -12,31 +16,42 @@ const choreSchema = new Schema({
     maxlength: 200,
     trim: true,
   },
-  choreDueDate: {
+  recurring: {
+    type: Boolean,
+    default: false,
+  },
+  recurringFrequency: {
+    type: String, 
+  },
+  recurringStartDate: {
     type: String,
   },
-  choreCompletedDate: [{
+  recurringEndDate: {
     type: String,
-  }],
-  chorePoints: {
-    type: Number,
-  },
-  family: {
-    type: Schema.Types.ObjectId,
-    ref: 'Family'
   },
   children: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Child'
+    child: {
+      type: Schema.Types.ObjectId,
+      ref: 'Child'
+    },
+    reward: {
+      type: Schema.Types.ObjectId,
+      ref: 'Reward'
+    },
+    consequence: {
+      type: Schema.Types.ObjectId,
+      ref: 'Consequence'
+    },
+    choreDueDate: {
+      type: String,
+    },
+    choreCompletedDate: [{
+      type: String,
+    }],
+    chorePoints: {
+      type: Number,
+    },
   }],
-  rewards: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Reward'
-  }],
-  consequences: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Consequence'
-  }]
 });
 
 const Chore = model('Chore', choreSchema);

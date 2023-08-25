@@ -25,14 +25,14 @@ const consequenceSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Family'
     },
-    children: [{
+    child: {
         type: Schema.Types.ObjectId,
         ref: 'Child'
-    }],
-    chores: [{
+    },
+    chore: {
         type: Schema.Types.ObjectId,
         ref: 'Chore'
-    }],
+    },
 });
 
 const Consequence = model('Consequence', consequenceSchema);

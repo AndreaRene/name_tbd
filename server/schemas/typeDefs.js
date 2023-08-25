@@ -184,32 +184,6 @@ input UpdateChoreRelationshipsInput {
   consequences: [ID]
 }
 
-input UpdateRewardInput {
-  family: ID
-  rewardTitle: String!
-  rewardText: String
-  rewardCost: Int
-  rewardCount: Int
-  rewardMaxCount: Int
-}
-
-input UpdateRewardRelationshipsInput {
-  children: [ID]
-  chores: [ID]
-}
-
-input UpdateConsequenceInput {
-  consTitle: String!
-  consText: String
-  consCount: Int
-  consCost: Int
-}
-
-input UpdateConsequenceRelationshipsInput {
-  children: [ID]
-  chores: [ID]
-}
-
 type Query {
   allFamilies: [Family]
   oneFamily(familyId: ID!): Family
@@ -241,8 +215,6 @@ type Mutation {
   updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
   updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
   updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
-  updateRewardRelationships(rewardId: ID!, input: UpdateRewardRelationshipsInput): Reward
-  updateConsequenceRelationships(consId: ID!, input: UpdateConsequenceRelationshipsInput): Consequence
 }
   
 `;

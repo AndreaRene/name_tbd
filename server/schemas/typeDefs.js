@@ -1,34 +1,77 @@
 const typeDefs = `
-    type Family {
-      _id: ID
-      familyName: String
-      familyPasscode: String
-      parentJoinCode: String
-      childJoinCode: String
-      parents: [Parent]
-      children: [Child]
-      chores: [Chore]
-      rewards: [Reward]
-      consequences: [Consequence]
-    }
-    
-    type Parent {
-      _id: ID
-      parentUsername: String
-      parentEmail: String!
-      parentPhone: String
-      parentPassword: String!
-      family: Family
+  type Family {
+    _id: ID
+    familyName: String
+    familyPasscode: String
+    parentJoinCode: String
+    childJoinCode: String
+    parents: [Parent]
+    children: [Child]
+    chores: [Chore]
+    rewards: [Reward]
+    consequences: [Consequence]
+  }
+
+  input FamilyInput {
+    familyName: String
+    familyPasscode: String
+  }
+  
+  input UpdateFamilyInput {
+    familyName: String
+    familyPasscode: String
+    parentJoinCode: String
+    childJoinCode: String
     }
 
-    type Child{
-      _id: ID
-      childUsername: String!
-      family: Family
-      chores: [Chore]
-      rewards: [Reward]
-      consequences: [Consequence]
-    }
+  input UpdateFamilyArrayFieldsInput {
+    parents: [ID]
+    children: [ID]
+    chores: [ID]
+    rewards: [ID]
+    consequences: [ID]
+  }
+
+  type Parent {
+    _id: ID
+    parentUsername: String
+    parentEmail: String!
+    parentPhone: String
+    parentPassword: String!
+    family: Family
+  }
+
+  input ParentInput{
+    parentUsername: String
+    parentEmail: String!
+    parentPhone: String
+    parentPassword: String!
+    family: ID
+  }
+  
+  input UpdateParentInput {
+    parentUsername: String
+    parentPhone: String
+    parentPassword: String!
+  }
+
+  type Child{
+    _id: ID
+    childUsername: String!
+    family: Family
+    chores: [Chore]
+    rewards: [Reward]
+    consequences: [Consequence]
+  }
+
+  input ChildInput {
+    childUsername: String!
+    family: ID
+  }
+
+  input UpdateChildInput {
+  childUsername: String!
+  }
 
   type Chore {
     _id: ID
@@ -41,6 +84,36 @@ const typeDefs = `
     recurringEndDate: String
     children: [ChildChoreAssociation]
   }
+  
+  input ChoreInput {
+    choreTitle: String!
+    choreText: String
+    recurring: Boolean
+    recurringFrequency: String
+    recurringStartDate: String
+    recurringEndDate: String
+    childAssociations: [ChildChoreAssociationInput]
+    family: ID
+  }
+  
+  input UpdateChoreInput {
+    choreTitle: String!
+    choreText: String
+    recurring: Boolean
+    recurringFrequency: String
+    recurringStartDate: String
+    recurringEndDate: String
+  }
+  
+  input UpdateChoreArrayFieldsInput {
+    children: [UpdateChildChoreAssociationInput]
+  }
+  
+  input UpdateChoreArrayFieldsInput {
+    children: [UpdateChildChoreAssociationInput]
+    rewards: [ID]
+    consequences: [ID]
+  }
 
   Type ChildChoreAssociation {
     child: Child
@@ -49,6 +122,27 @@ const typeDefs = `
     choreDueDate: String
     choreCompletedDate: [String]
     chorePoints: Int
+  }
+
+  input ChildChoreAssociationInput {
+    child: ID
+    reward: ID
+    consequence: ID
+    choreDueDate: String
+    chorePoints: Int
+  }
+  
+  input UpdateChildChoreAssociationInput {
+    child: ID
+    reward: ID
+    consequence: ID
+    choreDueDate: String
+    chorePoints: Int
+    choreCompletedDate: [UpdateChoreCompletedDateInput]
+  }
+  
+  input UpdateChoreCompletedDateInput{
+    choreCompletedDate: [String]
   }
 
   type Reward {
@@ -63,6 +157,15 @@ const typeDefs = `
     chores: [Chore]
   }
 
+  input RewardInput {
+    rewardTitle: String!
+    rewardText: String
+    rewardCost: Int
+    rewardCount: Int
+    rewardMaxCount: Int
+    family: ID
+  }
+
   type Consequence {
     _id: ID
     consTitle: String!
@@ -74,52 +177,6 @@ const typeDefs = `
     chores: [Chore]
   }
 
-  input FamilyInput {
-    familyName: String
-    familyPasscode: String
-    }
-
-  input ParentInput{
-    parentUsername: String
-    parentEmail: String!
-    parentPhone: String
-    parentPassword: String!
-    family: ID
-  }
-
-input ChildInput {
-  childUsername: String!
-  family: ID
-}
-
-input ChoreInput {
-  choreTitle: String!
-  choreText: String
-  recurring: Boolean
-  recurringFrequency: String
-  recurringStartDate: String
-  recurringEndDate: String
-  childAssociations: [ChildChoreAssociationInput]
-  family: ID
-}
-
-input ChildChoreAssociationInput {
-  child: ID
-  reward: ID
-  consequence: ID
-  choreDueDate: String
-  chorePoints: Int
-}
-
-  input RewardInput {
-    rewardTitle: String!
-    rewardText: String
-    rewardCost: Int
-    rewardCount: Int
-    rewardMaxCount: Int
-    family: ID
-  }
-
   input ConsequenceInput {
     consTitle: String!
     consText: String
@@ -127,62 +184,6 @@ input ChildChoreAssociationInput {
     consCost: Int
     family: ID
   }
-  
-  input UpdateFamilyInput {
-    familyName: String
-    familyPasscode: String
-    parentJoinCode: String
-    childJoinCode: String
-    }
-
-  input UpdateFamilyRelationshipsInput {
-    parents: [ID]
-    children: [ID]
-    chores: [ID]
-    rewards: [ID]
-    consequences: [ID]
-  }
-
-  input UpdateParentInput {
-    parentUsername: String
-    parentPhone: String
-    parentPassword: String!
-  }
-
-  input UpdateChildInput {
-  childUsername: String!
-}
-
-input UpdateChoreInput {
-  choreTitle: String!
-  choreText: String
-  recurring: Boolean
-  recurringFrequency: String
-  recurringStartDate: String
-  recurringEndDate: String
-}
-
-input UpdateChoreRelationshipsInput {
-  children: [UpdateChildChoreAssociationInput]
-}
-
-input UpdateChildChoreAssociationInput {
-  child: ID
-  reward: ID
-  consequence: ID
-  choreDueDate: String
-  chorePoints: Int
-}
-
-input UpdateChoreCompletedDateInput{
-  choreCompletedDate: [String]
-}
-
-input UpdateChoreRelationshipsInput {
-  children: [UpdateChildChoreAssociationInput]
-  rewards: [ID]
-  consequences: [ID]
-}
 
 type Query {
   allFamilies: [Family]
@@ -209,14 +210,11 @@ type Mutation {
   updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
   updateParent(parentId: ID!, input: UpdateParentInput): Parent
   updateChild(childId: ID!, input: UpdateChildInput): Child
-  updateChore(choreId: ID!, input: UpdateChoreInput): Chore
-  updateReward(rewardId: ID!, input: UpdateRewardInput): Reward
   updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
-  updateFamilyRelationships(familyId: ID!, input: UpdateFamilyRelationshipsInput): Family
-  updateChildRelationships(childId: ID!, input: UpdateChildRelationshipsInput): Child
-  updateChoreRelationships(choreId: ID!, input: UpdateChoreRelationshipsInput): Chore
-}
-  
+  updateFamilyArrayFields(familyId: ID!, input: UpdateFamilyArrayFieldsInput): Family
+  updateChildArrayFields(childId: ID!, input: UpdateChildArrayFieldsInput): Child
+  updateChoreArrayFields(choreId: ID!, input: UpdateChoreArrayFieldsInput): Chore
+  }
 `;
 
 

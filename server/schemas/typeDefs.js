@@ -51,6 +51,7 @@ const typeDefs = `
   
   input UpdateParentInput {
     parentUsername: String
+    parentEmail: String!
     parentPhone: String
     parentPassword: String!
   }
@@ -71,6 +72,12 @@ const typeDefs = `
 
   input UpdateChildInput {
   childUsername: String!
+  }
+
+  input UpdateChildArrayFieldsInput {
+    chores: [ID]
+    rewards: [ID]
+    consequences: [ID]
   }
 
   type Chore {
@@ -107,12 +114,6 @@ const typeDefs = `
   
   input UpdateChoreArrayFieldsInput {
     children: [UpdateChildChoreAssociationInput]
-  }
-  
-  input UpdateChoreArrayFieldsInput {
-    children: [UpdateChildChoreAssociationInput]
-    rewards: [ID]
-    consequences: [ID]
   }
 
   Type ChildChoreAssociation {
@@ -153,8 +154,8 @@ const typeDefs = `
     rewardCount: Int
     rewardMaxCount: Int
     family: Family
-    children: [Child]
-    chores: [Chore]
+    child: Child
+    chore: Chore
   }
 
   input RewardInput {
@@ -173,8 +174,8 @@ const typeDefs = `
     consCount: Int
     consCost: Int
     family: Family
-    children: [Child]
-    chores: [Chore]
+    child: Child
+    chore: Chore
   }
 
   input ConsequenceInput {

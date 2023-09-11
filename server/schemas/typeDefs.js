@@ -97,48 +97,36 @@ const typeDefs = `
   }
   
   input UpdateChoreInput {
-    choreTitle: String!
+    choreTitle: String
     choreText: String
-    recurring: Boolean
-  }
-  
-  input UpdateChoreArrayFieldsInput {
-    children: [UpdateChildChoreAssociationInput]
   }
 
-  Type ChildChoreAssociation {
+  type ChildChoreAssociation {
+    _id: ID
     child: Child
     reward: Reward
     consequence: Consequence
     recurringFrequency: String
     recurringStartDate: String
     recurringEndDate: String
-    choreDueDate: String
-    choreCompletedDate: [String]
+    choreDueDates: [String]
+    choreCompletedDates: [String]  
     chorePoints: Int
   }
 
-  input ChildChoreAssociationInput {
+  input UpdateChildChoreAssociationInput {
     child: ID
     reward: ID
     consequence: ID
     recurringFrequency: String
     recurringStartDate: String
     recurringEndDate: String
-    choreDueDate: String
     chorePoints: Int
   }
-  
-  input UpdateChildChoreAssociationInput {
-    child: ID
-    reward: ID
-    consequence: ID
-    choreDueDate: String
-    chorePoints: Int
-  }
-  
-  input UpdateChoreCompletedDateInput{
-    choreCompletedDate: [String]
+
+  input UpdateChildChoreDateArraysInput {
+    choreDueDates: [String]
+    choreCompletedDates: [String] 
   }
 
   type Reward {
@@ -202,10 +190,11 @@ const typeDefs = `
     updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
     updateChild(childId: ID!, input: UpdateChildInput): Child
-    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
+    updateChore(choreId: ID!, input: UpdateChoreInput): Chore
     updateFamilyArrayFields(familyId: ID!, input: UpdateFamilyArrayFieldsInput): Family
     updateChildArrayFields(childId: ID!, input: UpdateChildArrayFieldsInput): Child
-    updateChoreArrayFields(choreId: ID!, input: UpdateChoreArrayFieldsInput): Chore
+    updateChildChoreAssociation(choreId: ID!, childChoreAssociationId: ID!, input: UpdateChildChoreAssociationInput!): ChildChoreAssociation
+    UpdateChildChoreAssociationDateArrays(choreId: ID!, childChoreAssoiationId: ID!, input: UpdateChildChoreDateArraysInput): ChildChoreAssociation
     }
 `;
 

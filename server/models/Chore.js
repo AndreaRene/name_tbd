@@ -20,8 +20,8 @@ const choreSchema = new Schema({
     type: Boolean,
     default: false,
   },
- 
   children: [{
+    
     child: {
       type: Schema.Types.ObjectId,
       ref: 'Child'
@@ -35,10 +35,10 @@ const choreSchema = new Schema({
     recurringEndDate: {
       type: String,
     },
-    choreDueDate: {
+    choreDueDates: [{
       type: String,
-    },
-    choreCompletedDate: [{
+    }],
+    choreCompletedDates: [{
       type: String,
     }],
     chorePoints: {
@@ -51,8 +51,7 @@ const choreSchema = new Schema({
     consequence: {
       type: Schema.Types.ObjectId,
       ref: 'Consequence'
-    },
-
+    }
   }],
 });
 

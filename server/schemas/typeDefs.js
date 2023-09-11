@@ -86,9 +86,6 @@ const typeDefs = `
     choreTitle: String!
     choreText: String
     recurring: Boolean
-    recurringFrequency: String
-    recurringStartDate: String
-    recurringEndDate: String
     children: [ChildChoreAssociation]
   }
   
@@ -96,9 +93,6 @@ const typeDefs = `
     choreTitle: String!
     choreText: String
     recurring: Boolean
-    recurringFrequency: String
-    recurringStartDate: String
-    recurringEndDate: String
     family: ID
   }
   
@@ -106,9 +100,6 @@ const typeDefs = `
     choreTitle: String!
     choreText: String
     recurring: Boolean
-    recurringFrequency: String
-    recurringStartDate: String
-    recurringEndDate: String
   }
   
   input UpdateChoreArrayFieldsInput {
@@ -119,6 +110,9 @@ const typeDefs = `
     child: Child
     reward: Reward
     consequence: Consequence
+    recurringFrequency: String
+    recurringStartDate: String
+    recurringEndDate: String
     choreDueDate: String
     choreCompletedDate: [String]
     chorePoints: Int
@@ -128,6 +122,9 @@ const typeDefs = `
     child: ID
     reward: ID
     consequence: ID
+    recurringFrequency: String
+    recurringStartDate: String
+    recurringEndDate: String
     choreDueDate: String
     chorePoints: Int
   }
@@ -138,7 +135,6 @@ const typeDefs = `
     consequence: ID
     choreDueDate: String
     chorePoints: Int
-    choreCompletedDate: [UpdateChoreCompletedDateInput]
   }
   
   input UpdateChoreCompletedDateInput{
@@ -153,8 +149,6 @@ const typeDefs = `
     rewardCount: Int
     rewardMaxCount: Int
     family: Family
-    child: Child
-    chore: Chore
   }
 
   input RewardInput {
@@ -173,8 +167,6 @@ const typeDefs = `
     consCount: Int
     consCost: Int
     family: Family
-    child: Child
-    chore: Chore
   }
 
   input ConsequenceInput {

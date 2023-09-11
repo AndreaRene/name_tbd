@@ -99,7 +99,6 @@ const typeDefs = `
     recurringFrequency: String
     recurringStartDate: String
     recurringEndDate: String
-    childAssociations: [ChildChoreAssociationInput]
     family: ID
   }
   
@@ -186,36 +185,36 @@ const typeDefs = `
     family: ID
   }
 
-type Query {
-  allFamilies: [Family]
-  oneFamily(familyId: ID!): Family
-  allParents: [Parent]
-  oneParent(parentId: ID!): Parent
-  allChildren: [Child]
-  oneChild(childId: ID!): Child
-  allChores: [Chore]
-  oneChore(choreId: ID!): Chore
-  allRewards: [Reward]
-  oneReward(rewardId: ID!): Reward
-  allConsequences: [Consequence]
-  oneConsequence(consId: ID!): Consequence
-}
-
-type Mutation {
-  createFamily(input: FamilyInput!): Family
-  createParent(input: ParentInput!): Parent
-  createChild(input: ChildInput): Child
-  createChore(input: ChoreInput): Chore
-  createReward(input: RewardInput): Reward
-  createConsequence(input: ConsequenceInput): Consequence
-  updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
-  updateParent(parentId: ID!, input: UpdateParentInput): Parent
-  updateChild(childId: ID!, input: UpdateChildInput): Child
-  updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
-  updateFamilyArrayFields(familyId: ID!, input: UpdateFamilyArrayFieldsInput): Family
-  updateChildArrayFields(childId: ID!, input: UpdateChildArrayFieldsInput): Child
-  updateChoreArrayFields(choreId: ID!, input: UpdateChoreArrayFieldsInput): Chore
+  type Query {
+    allFamilies: [Family]
+    oneFamily(familyId: ID!): Family
+    allParents: [Parent]
+    oneParent(parentId: ID!): Parent
+    allChildren: [Child]
+    oneChild(childId: ID!): Child
+    allChores: [Chore]
+    oneChore(choreId: ID!): Chore
+    allRewards: [Reward]
+    oneReward(rewardId: ID!): Reward
+    allConsequences: [Consequence]
+    oneConsequence(consId: ID!): Consequence
   }
+
+  type Mutation {
+    createFamily(input: FamilyInput!): Family
+    createParent(input: ParentInput!): Parent
+    createChild(input: ChildInput): Child
+    createChore(input: ChoreInput): Chore
+    createReward(input: RewardInput): Reward
+    createConsequence(input: ConsequenceInput): Consequence
+    updateFamily(familyId: ID!, input: UpdateFamilyInput): Family
+    updateParent(parentId: ID!, input: UpdateParentInput): Parent
+    updateChild(childId: ID!, input: UpdateChildInput): Child
+    updateConsequence(consId: ID!, input: UpdateConsequenceInput): Consequence
+    updateFamilyArrayFields(familyId: ID!, input: UpdateFamilyArrayFieldsInput): Family
+    updateChildArrayFields(childId: ID!, input: UpdateChildArrayFieldsInput): Child
+    updateChoreArrayFields(choreId: ID!, input: UpdateChoreArrayFieldsInput): Chore
+    }
 `;
 
 

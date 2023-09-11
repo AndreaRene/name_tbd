@@ -34,7 +34,7 @@ const updateObject = async (Model, objectId, updateInput) => {
         );
 
         return updatedObject;
-    } catch {
+    } catch(error) {
         console.error('Error updating object:', error);
         throw new Error('Failed to update object.');
      }

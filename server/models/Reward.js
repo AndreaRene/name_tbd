@@ -30,15 +30,7 @@ const rewardSchema = new Schema({
     family: {
         type: Schema.Types.ObjectId,
         ref: 'Family'
-    },
-    children: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Child'
-    }],
-    chores: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Chore'
-    }]
+    }
 });
 
 const Reward = model('Reward', rewardSchema);

@@ -125,23 +125,12 @@ const resolvers = {
         updateParent: (_, { parentId, input }) => updateObject(Parent, parentId, input),
         updateChild: (_, { childId, input }) => updateObject(Child, childId, input),
         updateChore: (_, { choreId, input }) => updateObject(Chore, choreId, input),
-        updateReward: (_, { rewardId, input }) => updateObject(Reward, rewardId, input),
-        updateConsequence: (_, { consId, input }) => updateObject(Consequence, consId, input),
-        updateFamilyRelationships: (_, { familyId, input }) => {
+        updateFamilyArrayFields: (_, { familyId, input }) => {
             return updateObjectArrays(familyId, input, Family.findOneAndUpdate.bind(Family))
         },
-        updateChildRelationships: (_, { childId, input }) => {
+        updateChildArrayFields: (_, { childId, input }) => {
             return updateObjectArrays(childId, input, Child.findOneAndUpdate.bind(Child))
         },
-        updateChoreRelationships: (_, { choreId, input }) => {
-            return updateObjectArrays(choreId, input, Chore.findOneAndUpdate.bind(Chore))
-        },
-        updateRewardRelationships: (_, { rewardId, input }) => {
-            return updateObjectArrays(rewardId, input, Reward.findOneAndUpdate.bind(Reward))
-        },
-        updateConsequenceRelationships: (_, { consId, input }) => {
-            return updateObjectArrays(consId, input, Consequence.findOneAndUpdate.bind(Consequence))
-        }
     },
 };
 

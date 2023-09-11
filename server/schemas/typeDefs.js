@@ -191,10 +191,10 @@ const typeDefs = `
     updateParent(parentId: ID!, input: UpdateParentInput): Parent
     updateChild(childId: ID!, input: UpdateChildInput): Child
     updateChore(choreId: ID!, input: UpdateChoreInput): Chore
+    updateChildChoreAssociation(choreId: ID!, childChoreAssociationId: ID!, input: UpdateChildChoreAssociationInput!): ChildChoreAssociation
     updateFamilyArrayFields(familyId: ID!, input: UpdateFamilyArrayFieldsInput): Family
     updateChildArrayFields(childId: ID!, input: UpdateChildArrayFieldsInput): Child
-    updateChildChoreAssociation(choreId: ID!, childChoreAssociationId: ID!, input: UpdateChildChoreAssociationInput!): ChildChoreAssociation
-    UpdateChildChoreAssociationDateArrays(choreId: ID!, childChoreAssoiationId: ID!, input: UpdateChildChoreDateArraysInput): ChildChoreAssociation
+    UpdateChildChoreArrayFields(choreId: ID!, childChoreAssoiationId: ID!, input: UpdateChildChoreDateArraysInput): ChildChoreAssociation
     }
 `;
 
